@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Last Gradient</title>
+<meta name="description" content="A deep, retro space tower defense. Easy to pick up, hard to master. Endless runs. No ads. Coming soon to iPhone and iPad.">
+<meta property="og:title" content="Last Gradient">
+<meta property="og:description" content="A deep, retro space tower defense. Easy to pick up, hard to master. Endless runs. No ads.">
+<meta property="og:image" content="https://lastgradient.com/img/fight.jpg">
+<meta property="og:url" content="https://lastgradient.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07080f">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>html{background:#07080f}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap">
+<style>
+/* Layout: a left-aligned console column over the hangar sky. Title and sign-up first, then proof (screens), then the briefing. One dark world, the game's own. */
+:root {
+  --bg: #07080f; --panel: #0e1121; --panel2: #151933; --line: #2a2f52; --line2: #3a4170;
+  --ink: #e9e4d4; --dim: #9a99b8; --amber: #ffb03a; --core: #59f0b4; --bad: #ff4d6a; --void: #b86cff; --cryo: #6ae2ff;
+  --f-pix: 'Silkscreen', 'Courier New', monospace; --f-term: 'VT323', 'Courier New', monospace;
+  --cut: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  --w: 1120px;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-term); font-size: 22px; line-height: 1.25; }
+.wrap { max-width: var(--w); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, .lbl, button, .tag { font-family: var(--f-pix); font-weight: 400; }
+h2 { font-size: clamp(20px, 3vw, 28px); letter-spacing: 0.08em; margin: 0; text-wrap: balance; color: var(--ink); }
+p { margin: 0; max-width: 60ch; }
+.lbl { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+a { color: var(--cryo); }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* ---- hero ---- */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero::before { content: ""; position: absolute; inset: 0 0 0 38%; background: url(img/attractor.jpg) right center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); mask-image: linear-gradient(90deg, transparent, #000 45%); opacity: 0.9; }
+.hero .wrap { position: relative; padding-block: clamp(40px, 8vw, 96px) clamp(36px, 6vw, 72px); display: flex; flex-direction: column; gap: 28px; }
+.status { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.tag { font-size: 11px; letter-spacing: 0.2em; padding: 6px 10px; color: var(--bg); background: var(--core); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+h1 { margin: 0; line-height: 0.95; position: relative; width: fit-content; max-width: 100%; }
+h1 .last { display: block; font-size: clamp(16px, 3.4vw, 34px); letter-spacing: 0.55em; margin-bottom: 0.35em; color: var(--ink); text-shadow: 2px 0 var(--bad), -2px 0 var(--cryo); }
+h1 .grad { display: block; font-weight: 700; font-size: clamp(38px, 10.5vw, 118px); letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 34%, var(--cryo) 62%, var(--void) 86%, transparent 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(3px 0 0 rgba(255, 77, 106, 0.55)); }
+#shards { position: absolute; right: -14%; top: 20%; width: 46%; height: 90%; pointer-events: none; }
+.pitch { font-size: clamp(24px, 3vw, 32px); line-height: 1.15; max-width: 28ch; }
+.pitch b { color: var(--amber); font-weight: 400; }
+
+/* ---- sign-up ---- */
+.signup { display: flex; flex-direction: column; gap: 10px; max-width: 520px; }
+.signup .row { display: flex; flex-wrap: wrap; gap: 10px; }
+.signup input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 22px; color: var(--ink); background: rgba(14, 17, 33, 0.88); border: 0; box-shadow: inset 0 0 0 2px var(--line2); padding: 12px 14px; clip-path: var(--cut); }
+.signup input::placeholder { color: var(--dim); }
+.signup input:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--amber); }
+.signup button { flex: 0 0 auto; font-size: 14px; letter-spacing: 0.18em; color: #0b0b12; background: var(--amber); border: 0; padding: 14px 22px; cursor: pointer; clip-path: var(--cut); box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22); }
+.signup button:hover { background: #ffc264; }
+.signup small { font-size: 18px; color: var(--dim); }
+.signup .msg { font-size: 20px; color: var(--core); min-height: 1.25em; }
+.signup .msg.err { color: var(--bad); }
+
+/* ---- sections ---- */
+section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direction: column; gap: 26px; }
+.head { display: flex; flex-direction: column; gap: 10px; }
+.shot { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.shot img { display: block; width: 100%; height: auto; clip-path: var(--cut); box-shadow: 0 0 0 1px var(--line2); image-rendering: auto; background: var(--panel); }
+.shot figcaption { font-size: 20px; color: var(--dim); max-width: 60ch; }
+.shot figcaption b { color: var(--ink); font-weight: 400; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 26px; }
+
+.brief { border-block: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), var(--bg)); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.facts li { padding: 20px 22px 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.facts h3 { margin: 0; font-size: 14px; letter-spacing: 0.14em; color: var(--c, var(--core)); }
+.facts p { color: var(--ink); font-size: 21px; }
+.facts .n { color: var(--amber); }
+
+.promise { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 30px 48px; align-items: start; }
+.deal { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px 34px; }
+.deal li { padding-left: 20px; position: relative; }
+.deal li::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 9px; height: 9px; background: var(--core); }
+
+footer .wrap { padding-block: 28px 40px; display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; color: var(--dim); font-size: 19px; border-top: 1px solid var(--line); }
+footer span.sel { color: var(--ink); user-select: all; }
+@media (max-width: 640px) { .hero::before { inset: 0; opacity: 0.35; } #shards { display: none; } body { font-size: 20px; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="status"><span class="tag">COMING SOON</span><span class="lbl">iPhone and iPad · Tower defense</span></div>
+    <h1 aria-label="Last Gradient"><span class="last">LAST</span><span class="grad">GRADIENT</span><canvas id="shards" aria-hidden="true"></canvas></h1>
+    <p class="pitch">A deep, retro space tower defense. <b>Easy to pick up, hard to master.</b> Endless runs. No ads.</p>
+    <form class="signup" id="signupTop" novalidate>
+      <label class="lbl" for="emailTop">Launch news</label>
+      <div class="row"><input id="emailTop" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><button type="submit">NOTIFY ME</button></div>
+      <div class="msg" role="status" aria-live="polite"></div>
+      <small>One email when the game launches. Nothing else.</small>
+    </form>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <figure class="shot">
+      <img src="img/fight.jpg" alt="A late wave: enemy swarms crowd the road toward a line of towers while a black hole pulls at the field." width="1864" height="860">
+      <figcaption><b>Wave 48.</b> A black hole event is on the board.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="brief">
+  <div class="wrap">
+    <div class="head"><span class="lbl">The game</span><h2>What Is In It</h2></div>
+    <ul class="facts">
+      <li style="--c: var(--core)"><h3>Lift Off</h3><p>The core is your base. It can Lift Off and land in a new spot. If it lands on a tower, it docks and fires that tower's weapon at <span class="n">×2 damage</span>.</p></li>
+      <li style="--c: var(--amber)"><h3>Towers and Talents</h3><p><span class="n">19</span> towers and <span class="n">7</span> Talent trees. Every tower has upgrades, affixes and veteran ranks. Different builds play differently.</p></li>
+      <li style="--c: var(--bad)"><h3>Enemies That Adapt</h3><p>Enemy strains evolve against the towers you build. A boss arrives every <span class="n">10</span> waves.</p></li>
+      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run continues until the core is destroyed. Zones, wormholes and events change the board during a run.</p></li>
+      <li style="--c: var(--cryo)"><h3>Daily Hunt</h3><p>One new board each day. Every player gets the same <span class="n">40</span>-point build.</p></li>
+      <li style="--c: var(--ink)"><h3>Generated Music</h3><p>The game composes its soundtrack while you play. There are <span class="n">13</span> boss themes.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="pair">
+      <figure class="shot">
+        <img src="img/leia.jpg" alt="Boss card for Leia, a grey and white cat: Sits On Your Keyboard." width="1864" height="860" loading="lazy">
+        <figcaption><b>Leia.</b> She is a boss. She is based on my cat, who destroys couches.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/talents.jpg" alt="The Talents screen with the Ballistics tree open and 14 points spent." width="1864" height="860" loading="lazy">
+        <figcaption><b>Talents.</b> Rows open at 3 points and Capstones open at 12 points.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="brief">
+  <div class="wrap">
+    <div class="promise">
+      <div class="head"><span class="lbl">From the developer</span><h2>Why I Made It</h2>
+        <p>I'm really tired of mobile games that have ads, paywalls or microtransactions. I wanted a game anyone can pick up and play offline, while waiting in line or to unwind, without ads inside the game.</p></div>
+      <div class="head"><span class="lbl">Fair warning</span><h2>It Is Hard</h2>
+        <p>There are a lot of systems. The goal is replayability and fun. Stick with it.</p></div>
+    </div>
+    <ul class="deal">
+      <li>No ads</li><li>No microtransactions</li><li>Plays offline</li><li>Landscape on iPhone and iPad</li>
+    </ul>
+    <form class="signup" id="signupEnd" novalidate>
+      <label class="lbl" for="emailEnd">Get the launch email</label>
+      <div class="row"><input id="emailEnd" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><button type="submit">NOTIFY ME</button></div>
+      <div class="msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Last Gradient</span>
+    <span>Contact: <span class="sel">nic@lastgradient.com</span></span>
+  </div>
+</footer>
+
+<script>
+// Sign-up: posts the address to a sheet in the lastgradient.com Workspace. Empty URL = not connected yet (this draft).
+const SIGNUP_URL = '';
+for (const f of document.querySelectorAll('form.signup')) {
+  f.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const inp = f.querySelector('input'), msg = f.querySelector('.msg'), v = inp.value.trim();
+    const say = (t, bad) => { msg.textContent = t; msg.classList.toggle('err', !!bad); };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { say('That does not look like an email address.', 1); inp.focus(); return; }
+    if (!SIGNUP_URL) { say('Draft page: sign-up is not connected yet.'); return; }
+    try { await fetch(SIGNUP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ email: v, at: new Date().toISOString() }) }); inp.value = ''; say('You are on the list.'); }
+    catch (e) { say('That did not go through. Try again in a minute.', 1); }
+  });
+}
+// Title fracture: pixel shards drift off the end of GRADIENT (the game's hangar effect, simplified).
+(() => {
+  const c = document.getElementById('shards'); if (!c || !c.getContext) return;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches, x = c.getContext('2d'), cols = ['#b86cff', '#6ae2ff', '#b86cff', '#e9e4d4'];
+  let W = 0, H = 0, P = [];
+  const size = () => { const r = c.getBoundingClientRect(); W = c.width = Math.max(1, Math.round(r.width)); H = c.height = Math.max(1, Math.round(r.height)); };
+  const mk = (any) => ({ x: any ? Math.random() * W : Math.random() * W * 0.25, y: H * (0.1 + Math.random() * 0.62), s: Math.random() < 0.3 ? 8 : 4, vx: 6 + Math.random() * 16, vy: (Math.random() - 0.4) * 5, c: cols[Math.random() * cols.length | 0] });
+  const draw = () => { x.clearRect(0, 0, W, H); for (const p of P) { x.globalAlpha = Math.max(0, 1 - p.x / W) * 0.9; x.fillStyle = p.c; x.fillRect(Math.round(p.x / 4) * 4, Math.round(p.y / 4) * 4, p.s, p.s); } };
+  size(); P = Array.from({ length: 46 }, () => mk(1)); draw(); addEventListener('resize', () => { size(); draw(); });
+  if (still) return; let t0 = performance.now();
+  const step = (t) => { const dt = Math.min(0.05, (t - t0) / 1000); t0 = t; P = P.map(p => { p.x += p.vx * dt; p.y += p.vy * dt; return p.x > W ? mk(0) : p; }); draw(); requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>
