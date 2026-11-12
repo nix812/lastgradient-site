@@ -264,18 +264,18 @@ for (const f of document.querySelectorAll('form.signup')) {
     for (let i = 0; i < 4000; i++) step(q, 0.006);
     for (let i = 0; i < n; i++) { for (let k = 0; k < 23; k++) step(q, 0.006); const p = { x: q.x, y: q.y, z: q.z, w: Math.random() < 0.12 }; [p.sx, p.sy] = proj(p); P.push(p); }
   };
-  const size = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = c.width = Math.max(2, Math.round(r.width * dpr)); H = c.height = Math.max(2, Math.round(r.height * dpr)); sc = Math.min(W / 61, H / 52); g.clearRect(0, 0, W, H); seed(); for (let i = 0; i < 170; i++) frame(0.016); };
-  const core = (x, y, z, col) => { const [a, b] = proj({ x, y, z }), r = sc * 5.2, gr = g.createRadialGradient(a, b, 0, a, b, r); gr.addColorStop(0, 'rgba(255,255,255,.10)'); gr.addColorStop(0.18, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(a - r, b - r, 2 * r, 2 * r); };
+  const size = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = c.width = Math.max(2, Math.round(r.width * dpr)); H = c.height = Math.max(2, Math.round(r.height * dpr)); sc = Math.min(W / 61, H / 52); g.clearRect(0, 0, W, H); seed(); for (let i = 0; i < 320; i++) frame(0.016); };
+  const core = (x, y, z, col) => { const [a, b] = proj({ x, y, z }), r = sc * 5.2, gr = g.createRadialGradient(a, b, 0, a, b, r); gr.addColorStop(0, 'rgba(255,255,255,.05)'); gr.addColorStop(0.18, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(a - r, b - r, 2 * r, 2 * r); };
   function frame(dt) {
     th = 0.35 + 0.45 * Math.sin(performance.now() / 23000);
-    g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,.055)'; g.fillRect(0, 0, W, H);
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,.028)'; g.fillRect(0, 0, W, H);
     g.globalCompositeOperation = 'lighter'; g.lineWidth = dpr; g.lineCap = 'round';
     const paths = [new Path2D(), new Path2D(), new Path2D()];
-    for (const p of P) { const ox = p.sx, oy = p.sy; step(p, 0.0042); step(p, 0.0042); [p.sx, p.sy] = proj(p); const pa = paths[p.w ? 2 : p.x < 0 ? 0 : 1]; pa.moveTo(ox, oy); pa.lineTo(p.sx, p.sy); }
+    for (const p of P) { const ox = p.sx, oy = p.sy; step(p, 0.0021); step(p, 0.0021); [p.sx, p.sy] = proj(p); const pa = paths[p.w ? 2 : p.x < 0 ? 0 : 1]; pa.moveTo(ox, oy); pa.lineTo(p.sx, p.sy); }
     g.strokeStyle = 'rgba(106,226,255,.34)'; g.stroke(paths[0]);
     g.strokeStyle = 'rgba(184,108,255,.38)'; g.stroke(paths[1]);
     g.strokeStyle = 'rgba(233,228,212,.42)'; g.stroke(paths[2]);
-    const k = Math.sqrt(72); core(-k, -k, 27, 'rgba(106,226,255,.045)'); core(k, k, 27, 'rgba(184,108,255,.05)');
+    const k = Math.sqrt(72); core(-k, -k, 27, 'rgba(106,226,255,.023)'); core(k, k, 27, 'rgba(184,108,255,.025)');
   }
   const loop = () => { if (on && !document.hidden) frame(0.016); raf = requestAnimationFrame(loop); };
   size(); let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
