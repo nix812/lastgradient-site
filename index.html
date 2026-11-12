@@ -83,7 +83,9 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .facts p { color: var(--ink); font-size: 21px; }
 .facts .n { color: var(--amber); }
 
-.promise { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 30px 48px; align-items: start; }
+.letter { display: flex; flex-direction: column; gap: 16px; }
+.letter p { max-width: 62ch; }
+.letter .sig { font-family: var(--f-pix); font-size: 16px; letter-spacing: 0.12em; color: var(--amber); }
 .deal { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px 34px; }
 .deal li { padding-left: 20px; position: relative; }
 .deal li::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 9px; height: 9px; background: var(--core); }
@@ -147,12 +149,18 @@ footer span.sel { color: var(--ink); user-select: all; }
 
 <section class="brief">
   <div class="wrap">
-    <div class="promise">
-      <div class="head"><span class="lbl">From the developer</span><h2>Why I Made It</h2>
-        <p>I'm really tired of mobile games that have ads, paywalls or microtransactions. I wanted a game anyone can pick up and play offline, while waiting in line or to unwind, without ads inside the game.</p></div>
-      <div class="head"><span class="lbl">Fair warning</span><h2>It Is Hard</h2>
-        <p>There are a lot of systems. The goal is replayability and fun. Stick with it.</p></div>
+    <div class="letter">
+      <div class="head"><span class="lbl">From the developer</span><h2>Why I Made It</h2></div>
+      <p>I'm not a coder, and I'm not an artistic person. I'm a gamer with a really good understanding of mechanics, and I had an idea to make a game for the players.</p>
+      <p>I made Last Gradient with AI. AI wrote the code, the art and the music. The design, the mechanics and every decision are mine. I don't have a team to help.</p>
+      <p>I'm not here to make a buck. I have a day job. I'm tired of the cancerous games on the market today. You know the microtransaction-riddled crap I'm talking about.</p>
+      <p>This is a letter to the games of old, the ones you just played and enjoyed. The games that developers spent time on to make great. I want to detach myself from the corporate slop that gaming has become.</p>
+      <p>I wanted a game anyone can pick up and play offline, while waiting in line or to unwind, without ads inside the game.</p>
+      <p>I plan to take player feedback and continually improve the game. Send Feedback is in the game, and I read the reports.</p>
+      <p class="sig">Nic</p>
     </div>
+    <div class="head"><span class="lbl">Fair warning</span><h2>It Is Hard</h2>
+      <p>There are a lot of systems. The goal is replayability and fun. Stick with it.</p></div>
     <ul class="deal">
       <li>No ads</li><li>No microtransactions</li><li>Plays offline</li><li>Landscape on iPhone and iPad</li>
     </ul>
@@ -168,6 +176,7 @@ footer span.sel { color: var(--ink); user-select: all; }
   <div class="wrap">
     <span>© 2026 Last Gradient</span>
     <span>Contact: <span class="sel">nic@lastgradient.com</span></span>
+    <a href="privacy.html">Privacy</a>
   </div>
 </footer>
 
