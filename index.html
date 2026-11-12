@@ -181,7 +181,7 @@ for (const f of document.querySelectorAll('form.signup')) {
     const say = (t, bad) => { msg.textContent = t; msg.classList.toggle('err', !!bad); };
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { say('That does not look like an email address.', 1); inp.focus(); return; }
     if (!SIGNUP_URL) { say('Draft page: sign-up is not connected yet.'); return; }
-    try { await fetch(SIGNUP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ email: v, at: new Date().toISOString() }) }); inp.value = ''; say('You are on the list.'); }
+    try { await fetch(SIGNUP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ app: 'last-gradient-site', email: v }) }); inp.value = ''; say('You are on the list.'); }
     catch (e) { say('That did not go through. Try again in a minute.', 1); }
   });
 }
