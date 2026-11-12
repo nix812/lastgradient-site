@@ -41,8 +41,9 @@ a { color: var(--cryo); }
 
 /* ---- hero ---- */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero::before { content: ""; position: absolute; inset: 0 0 0 38%; background: url(img/attractor.jpg) right center / cover no-repeat;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); mask-image: linear-gradient(90deg, transparent, #000 45%); opacity: 0.9; }
+.hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(42% 60% at 78% 38%, rgba(184,108,255,.20), transparent 70%), radial-gradient(38% 55% at 52% 62%, rgba(106,226,255,.14), transparent 70%), radial-gradient(30% 40% at 92% 80%, rgba(255,77,106,.07), transparent 70%); }
+#sky { position: absolute; inset: 0 0 0 26%; width: 74%; height: 100%; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); }
 .hero .wrap { position: relative; padding-block: clamp(40px, 8vw, 96px) clamp(36px, 6vw, 72px); display: flex; flex-direction: column; gap: 28px; }
 .status { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
 .tag { font-size: 11px; letter-spacing: 0.2em; padding: 6px 10px; color: var(--bg); background: var(--core); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
@@ -92,10 +93,49 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 
 footer .wrap { padding-block: 28px 40px; display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; color: var(--dim); font-size: 19px; border-top: 1px solid var(--line); }
 footer span.sel { color: var(--ink); user-select: all; }
-@media (max-width: 640px) { .hero::before { inset: 0; opacity: 0.35; } #shards { display: none; } body { font-size: 20px; } }
+
+/* faint stars so the dark areas are not empty */
+body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,212,.55) 50%, transparent 51%), radial-gradient(1px 1px at 210px 320px, rgba(106,226,255,.5) 50%, transparent 51%), radial-gradient(1px 1px at 380px 140px, rgba(233,228,212,.4) 50%, transparent 51%), radial-gradient(1.5px 1.5px at 520px 430px, rgba(184,108,255,.5) 50%, transparent 51%), radial-gradient(1px 1px at 130px 520px, rgba(233,228,212,.35) 50%, transparent 51%), radial-gradient(1px 1px at 600px 40px, rgba(233,228,212,.45) 50%, transparent 51%); background-size: 660px 600px; }
+.story, .side { display: flex; flex-direction: column; gap: 26px; }
+
+/* ---- PC layout: wider column, larger type, the game shot overlaps the hero, the letter gets a side panel ---- */
+@media (min-width: 1000px) {
+  :root { --w: 1320px; }
+  body { font-size: 26px; }
+  .lbl, .tag { font-size: 13px; }
+  h2 { font-size: 38px; }
+  .hero { border-bottom: 0; }
+  .hero .wrap { padding-block: clamp(56px, 9vh, 110px) 250px; gap: 34px; }
+  h1 .last { font-size: 44px; }
+  h1 .grad { font-size: clamp(118px, 9vw, 168px); }
+  .pitch { font-size: 40px; max-width: 30ch; }
+  .signup { max-width: 620px; }
+  .signup input { font-size: 26px; padding: 15px 18px; }
+  .signup button { font-size: 16px; padding: 17px 30px; }
+  .signup small { font-size: 21px; }
+  .signup .msg { font-size: 23px; }
+  .lead { margin-top: -190px; position: relative; }
+  .lead .wrap { padding-top: 0; }
+  .device { padding: 16px; background: #04050a; border-radius: 52px; box-shadow: 0 0 0 2px var(--line2), 0 0 0 10px rgba(14,17,33,.9), 0 50px 140px rgba(106,226,255,.10), 0 40px 90px rgba(0,0,0,.7); }
+  .device img { border-radius: 36px; clip-path: none; box-shadow: none; }
+  .shot figcaption { font-size: 23px; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .facts li { padding: 30px 40px 34px 0; gap: 12px; }
+  .facts h3 { font-size: 20px; }
+  .facts p { font-size: 25px; }
+  .facts .n { font-family: var(--f-pix); font-size: 0.86em; }
+  .pair { gap: 40px; }
+  .story { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 90px; align-items: start; }
+  .letter { gap: 20px; }
+  .side { position: sticky; top: 40px; padding: 36px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line2); clip-path: var(--cut); gap: 28px; }
+  .deal { flex-direction: column; gap: 12px; }
+  footer .wrap { font-size: 22px; }
+}
+@media (max-width: 640px) { #sky { inset: 0; width: 100%; opacity: 0.5; -webkit-mask-image: none; mask-image: none; } #shards { display: none; } body { font-size: 20px; } }
 </style>
 
 <header class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="status"><span class="tag">COMING SOON</span><span class="lbl">iPhone and iPad · Tower defense</span></div>
     <h1 aria-label="Last Gradient"><span class="last">LAST</span><span class="grad">GRADIENT</span><canvas id="shards" aria-hidden="true"></canvas></h1>
@@ -109,10 +149,10 @@ footer span.sel { color: var(--ink); user-select: all; }
   </div>
 </header>
 
-<section>
+<section class="lead">
   <div class="wrap">
     <figure class="shot">
-      <img src="img/fight.jpg" alt="A late wave: enemy swarms crowd the road toward a line of towers while a black hole pulls at the field." width="1864" height="860">
+      <div class="device"><img src="img/fight.jpg" alt="A late wave: enemy swarms crowd the road toward a line of towers while a black hole pulls at the field." width="1864" height="860"></div>
       <figcaption><b>Wave 48.</b> A black hole event is on the board.</figcaption>
     </figure>
   </div>
@@ -149,6 +189,7 @@ footer span.sel { color: var(--ink); user-select: all; }
 
 <section class="brief">
   <div class="wrap">
+    <div class="story">
     <div class="letter">
       <div class="head"><span class="lbl">From the developer</span><h2>Why I Made It</h2></div>
       <p>I'm not a coder, and I'm not an artistic person. I'm a gamer with a really good understanding of mechanics, and I had an idea to make a game for the players.</p>
@@ -159,6 +200,7 @@ footer span.sel { color: var(--ink); user-select: all; }
       <p>I plan to take player feedback and continually improve the game. Send Feedback is in the game, and I read the reports.</p>
       <p class="sig">Nic</p>
     </div>
+    <aside class="side">
     <div class="head"><span class="lbl">Fair warning</span><h2>It Is Hard</h2>
       <p>There are a lot of systems. The goal is replayability and fun. Stick with it.</p></div>
     <ul class="deal">
@@ -169,6 +211,8 @@ footer span.sel { color: var(--ink); user-select: all; }
       <div class="row"><input id="emailEnd" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><button type="submit">NOTIFY ME</button></div>
       <div class="msg" role="status" aria-live="polite"></div>
     </form>
+    </aside>
+    </div>
   </div>
 </section>
 
@@ -206,6 +250,38 @@ for (const f of document.querySelectorAll('form.signup')) {
   if (still) return; let t0 = performance.now();
   const step = (t) => { const dt = Math.min(0.05, (t - t0) / 1000); t0 = t; P = P.map(p => { p.x += p.vx * dt; p.y += p.vy * dt; return p.x > W ? mk(0) : p; }); draw(); requestAnimationFrame(step); };
   requestAnimationFrame(step);
+})();
+// Hero sky: two intertwined galaxies, drawn live so they are sharp on any screen. Particles trace a Lorenz attractor and leave fading trails.
+(() => {
+  const c = document.getElementById('sky'); if (!c || !c.getContext) return;
+  const g = c.getContext('2d'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0, dpr = 1, sc = 1, P = [], th = 0.35, on = true, raf = 0;
+  const step = (p, dt) => { const dx = 10 * (p.y - p.x), dy = p.x * (28 - p.z) - p.y, dz = p.x * p.y - (8 / 3) * p.z; p.x += dx * dt; p.y += dy * dt; p.z += dz * dt; };
+  const TILT = -0.30, ct = Math.cos(TILT), st = Math.sin(TILT);
+  const proj = (p) => { const u = (p.x * Math.cos(th) + p.y * Math.sin(th)) * sc, v = -(p.z - 25) * sc; return [W * (W / dpr < 700 ? 0.52 : 0.62) + u * ct - v * st, H * 0.47 + u * st + v * ct]; };
+  const seed = () => {
+    const n = W / dpr < 700 ? 520 : 1500, q = { x: 0.1, y: 0, z: 0 }; P = [];
+    for (let i = 0; i < 4000; i++) step(q, 0.006);
+    for (let i = 0; i < n; i++) { for (let k = 0; k < 23; k++) step(q, 0.006); const p = { x: q.x, y: q.y, z: q.z, w: Math.random() < 0.12 }; [p.sx, p.sy] = proj(p); P.push(p); }
+  };
+  const size = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = c.width = Math.max(2, Math.round(r.width * dpr)); H = c.height = Math.max(2, Math.round(r.height * dpr)); sc = Math.min(W / 61, H / 52); g.clearRect(0, 0, W, H); seed(); for (let i = 0; i < 170; i++) frame(0.016); };
+  const core = (x, y, z, col) => { const [a, b] = proj({ x, y, z }), r = sc * 5.2, gr = g.createRadialGradient(a, b, 0, a, b, r); gr.addColorStop(0, 'rgba(255,255,255,.10)'); gr.addColorStop(0.18, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(a - r, b - r, 2 * r, 2 * r); };
+  function frame(dt) {
+    th = 0.35 + 0.45 * Math.sin(performance.now() / 23000);
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,.055)'; g.fillRect(0, 0, W, H);
+    g.globalCompositeOperation = 'lighter'; g.lineWidth = dpr; g.lineCap = 'round';
+    const paths = [new Path2D(), new Path2D(), new Path2D()];
+    for (const p of P) { const ox = p.sx, oy = p.sy; step(p, 0.0042); step(p, 0.0042); [p.sx, p.sy] = proj(p); const pa = paths[p.w ? 2 : p.x < 0 ? 0 : 1]; pa.moveTo(ox, oy); pa.lineTo(p.sx, p.sy); }
+    g.strokeStyle = 'rgba(106,226,255,.34)'; g.stroke(paths[0]);
+    g.strokeStyle = 'rgba(184,108,255,.38)'; g.stroke(paths[1]);
+    g.strokeStyle = 'rgba(233,228,212,.42)'; g.stroke(paths[2]);
+    const k = Math.sqrt(72); core(-k, -k, 27, 'rgba(106,226,255,.045)'); core(k, k, 27, 'rgba(184,108,255,.05)');
+  }
+  const loop = () => { if (on && !document.hidden) frame(0.016); raf = requestAnimationFrame(loop); };
+  size(); let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
+  if (still) return;
+  if ('IntersectionObserver' in window) new IntersectionObserver((e) => { on = e[0].isIntersecting; }).observe(c);
+  raf = requestAnimationFrame(loop);
 })();
 </script>
 </body>
