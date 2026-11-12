@@ -42,7 +42,7 @@ a { color: var(--cryo); }
 /* ---- hero ---- */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
 .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(42% 60% at 78% 38%, rgba(184,108,255,.20), transparent 70%), radial-gradient(38% 55% at 52% 62%, rgba(106,226,255,.14), transparent 70%), radial-gradient(30% 40% at 92% 80%, rgba(255,77,106,.07), transparent 70%); }
-#sky { position: absolute; inset: 0 0 0 26%; width: 74%; height: 100%; pointer-events: none;
+#sky { position: absolute; inset: 0 0 0 26%; width: 74%; height: 100%; pointer-events: none; mix-blend-mode: screen;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); }
 .hero .wrap { position: relative; padding-block: clamp(40px, 8vw, 96px) clamp(36px, 6vw, 72px); display: flex; flex-direction: column; gap: 28px; }
 .status { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
@@ -251,37 +251,59 @@ for (const f of document.querySelectorAll('form.signup')) {
   const step = (t) => { const dt = Math.min(0.05, (t - t0) / 1000); t0 = t; P = P.map(p => { p.x += p.vx * dt; p.y += p.vy * dt; return p.x > W ? mk(0) : p; }); draw(); requestAnimationFrame(step); };
   requestAnimationFrame(step);
 })();
-// Hero sky: two intertwined galaxies, drawn live so they are sharp on any screen. Particles trace a Lorenz attractor and leave fading trails.
+// Hero sky: two intertwined galaxies, drawn live so they are sharp on any screen. Particles run a Lorenz attractor slowly
+// (one turn of a wing takes about 10 s). Each keeps its last M positions; the canvas is cleared and redrawn every frame.
 (() => {
   const c = document.getElementById('sky'); if (!c || !c.getContext) return;
   const g = c.getContext('2d'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W = 0, H = 0, dpr = 1, sc = 1, P = [], th = 0.35, on = true, raf = 0;
-  const step = (p, dt) => { const dx = 10 * (p.y - p.x), dy = p.x * (28 - p.z) - p.y, dz = p.x * p.y - (8 / 3) * p.z; p.x += dx * dt; p.y += dy * dt; p.z += dz * dt; };
+  const SPD = 0.06, M = 12, TD = 0.0125, S = M + 1, COL = ['106,226,255', '184,108,255', '233,228,212'], RGB = COL.map(v => v.split(',').map(Number)), AL = [1.05, 1.2, 1.25], FALL = Array.from({ length: M + 1 }, (_, j) => Math.exp(-1.7 * (j + 0.5) / (M + 1)));
   const TILT = -0.30, ct = Math.cos(TILT), st = Math.sin(TILT);
-  const proj = (p) => { const u = (p.x * Math.cos(th) + p.y * Math.sin(th)) * sc, v = -(p.z - 25) * sc; return [W * (W / dpr < 700 ? 0.52 : 0.62) + u * ct - v * st, H * 0.47 + u * st + v * ct]; };
-  const seed = () => {
-    const n = W / dpr < 700 ? 520 : 1500, q = { x: 0.1, y: 0, z: 0 }; P = [];
-    for (let i = 0; i < 4000; i++) step(q, 0.006);
-    for (let i = 0; i < n; i++) { for (let k = 0; k < 23; k++) step(q, 0.006); const p = { x: q.x, y: q.y, z: q.z, w: Math.random() < 0.12 }; [p.sx, p.sy] = proj(p); P.push(p); }
+  let W = 0, H = 0, dpr = 1, sc = 1, N = 0, HX, PH, GP, ring = 0, acc = 0, th = 0.35, on = true, last = 0;
+  const lz = (A, i, h) => { const x = A[i], y = A[i + 1], z = A[i + 2]; A[i] = x + 10 * (y - x) * h; A[i + 1] = y + (x * (28 - z) - y) * h; A[i + 2] = z + (x * y - (8 / 3) * z) * h; };
+  const seed = (n) => {
+    N = n; HX = new Float32Array(N * 3); PH = new Float32Array(N * S * 3); GP = new Uint8Array(N); ring = 0; acc = 0;
+    const q = new Float32Array([0.1, 0, 20]); for (let i = 0; i < 4000; i++) lz(q, 0, 0.006);
+    for (let i = 0; i < N; i++) { for (let k = 0; k < 23; k++) lz(q, 0, 0.006); const o = i * 3; HX[o] = q[0]; HX[o + 1] = q[1]; HX[o + 2] = q[2];
+      for (let j = M; j >= 0; j--) { const w = (i * S + j) * 3; PH[w] = HX[o]; PH[w + 1] = HX[o + 1]; PH[w + 2] = HX[o + 2]; if (j) for (let k = 0; k < 3; k++) lz(HX, o, TD / 3); }
+      GP[i] = Math.random() < 0.12 ? 2 : 255; }
   };
-  const size = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = c.width = Math.max(2, Math.round(r.width * dpr)); H = c.height = Math.max(2, Math.round(r.height * dpr)); sc = Math.min(W / 61, H / 52); g.clearRect(0, 0, W, H); seed(); for (let i = 0; i < 320; i++) frame(0.016); };
-  const core = (x, y, z, col) => { const [a, b] = proj({ x, y, z }), r = sc * 5.2, gr = g.createRadialGradient(a, b, 0, a, b, r); gr.addColorStop(0, 'rgba(255,255,255,.05)'); gr.addColorStop(0.18, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(a - r, b - r, 2 * r, 2 * r); };
+  const size = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1, Math.sqrt(1.6e6 / Math.max(1, r.width * r.height))); W = c.width = Math.max(2, Math.round(r.width * dpr)); H = c.height = Math.max(2, Math.round(r.height * dpr)); sc = Math.min(W / 61, H / 52); const n = r.width < 700 ? 520 : 1500; if (n !== N) seed(n); frame(0); };
+  // The trails are plotted by hand into a pixel buffer over the galaxies (thousands of canvas lines a frame were too slow).
+  // Each sample is split over two neighbouring pixels, so the lines are smooth. The canvas blends with `screen` (CSS).
+  let buf = null, bw = 0, bh = 0;
   function frame(dt) {
+    const h = Math.min(0.012, dt * SPD), ns = Math.max(1, Math.ceil(h / 0.0045)), hs = h / ns;
+    if (h > 0) { for (let i = 0; i < N; i++) for (let k = 0; k < ns; k++) lz(HX, i * 3, hs);
+      acc += h; while (acc >= TD) { acc -= TD; ring = (ring + M) % S; for (let i = 0; i < N; i++) { const w = (i * S + ring) * 3, o = i * 3; PH[w] = HX[o]; PH[w + 1] = HX[o + 1]; PH[w + 2] = HX[o + 2]; } } }
     th = 0.35 + 0.45 * Math.sin(performance.now() / 23000);
-    g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,.028)'; g.fillRect(0, 0, W, H);
-    g.globalCompositeOperation = 'lighter'; g.lineWidth = dpr; g.lineCap = 'round';
-    const paths = [new Path2D(), new Path2D(), new Path2D()];
-    for (const p of P) { const ox = p.sx, oy = p.sy; step(p, 0.0021); step(p, 0.0021); [p.sx, p.sy] = proj(p); const pa = paths[p.w ? 2 : p.x < 0 ? 0 : 1]; pa.moveTo(ox, oy); pa.lineTo(p.sx, p.sy); }
-    g.strokeStyle = 'rgba(106,226,255,.34)'; g.stroke(paths[0]);
-    g.strokeStyle = 'rgba(184,108,255,.38)'; g.stroke(paths[1]);
-    g.strokeStyle = 'rgba(233,228,212,.42)'; g.stroke(paths[2]);
-    const k = Math.sqrt(72); core(-k, -k, 27, 'rgba(106,226,255,.023)'); core(k, k, 27, 'rgba(184,108,255,.025)');
+    const cth = Math.cos(th), sth = Math.sin(th), gx0 = W * (W / dpr < 700 ? 0.52 : 0.62), gy0 = H * 0.47;
+    const bx = Math.max(0, Math.floor(gx0 - 34 * sc)), by = Math.max(0, Math.floor(gy0 - 31 * sc)), w2 = Math.min(W, Math.ceil(gx0 + 34 * sc)) - bx, h2 = Math.min(H, Math.ceil(gy0 + 31 * sc)) - by;
+    g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, W, H); if (w2 < 4 || h2 < 4) return;
+    if (!buf || bw !== w2 || bh !== h2) { bw = w2; bh = h2; buf = g.createImageData(bw, bh); }
+    const d = buf.data; d.fill(0); const cx = gx0 - bx, cy = gy0 - by, xm = bw - 2, ym = bh - 2;
+    for (let i = 0; i < N; i++) {
+      const o = i * 3, gp = GP[i] === 255 ? (HX[o] < 0 ? 0 : 1) : GP[i], col = RGB[gp], al = AL[gp];
+      let u = (HX[o] * cth + HX[o + 1] * sth) * sc, v = -(HX[o + 2] - 25) * sc, px = cx + u * ct - v * st, py = cy + u * st + v * ct;
+      for (let j = 0; j < S; j++) { const w = (i * S + (ring + j) % S) * 3; u = (PH[w] * cth + PH[w + 1] * sth) * sc; v = -(PH[w + 2] - 25) * sc;
+        const nx = cx + u * ct - v * st, ny = cy + u * st + v * ct, dx = nx - px, dy = ny - py, adx = dx < 0 ? -dx : dx, ady = dy < 0 ? -dy : dy;
+        const wt = al * FALL[j], c0 = col[0] * wt, c1 = col[1] * wt, c2 = col[2] * wt, n = Math.max(1, Math.ceil(adx > ady ? adx : ady)), sx = dx / n, sy = dy / n;
+        if (adx > ady) for (let q = 0; q < n; q++) { const X = (px + sx * q + 0.5) | 0, yy = py + sy * q, Y = Math.floor(yy), f = yy - Y; if (X < 0 || X > xm || Y < 0 || Y > ym) continue;
+          let m = (Y * bw + X) * 4; const e = 1 - f; d[m] += c0 * e; d[m + 1] += c1 * e; d[m + 2] += c2 * e; d[m + 3] = 255; m += bw * 4; d[m] += c0 * f; d[m + 1] += c1 * f; d[m + 2] += c2 * f; d[m + 3] = 255; }
+        else for (let q = 0; q < n; q++) { const Y = (py + sy * q + 0.5) | 0, xx = px + sx * q, X = Math.floor(xx), f = xx - X; if (X < 0 || X > xm || Y < 0 || Y > ym) continue;
+          let m = (Y * bw + X) * 4; const e = 1 - f; d[m] += c0 * e; d[m + 1] += c1 * e; d[m + 2] += c2 * e; d[m + 3] = 255; m += 4; d[m] += c0 * f; d[m + 1] += c1 * f; d[m + 2] += c2 * f; d[m + 3] = 255; }
+        px = nx; py = ny; }
+    }
+    g.putImageData(buf, bx, by); g.globalCompositeOperation = 'lighter';
+    const k = Math.sqrt(72), r = sc * 5.2;
+    for (let n = 0; n < 2; n++) { const sd = n ? 1 : -1, col = COL[n], u = (sd * k * cth + sd * k * sth) * sc, v = -2 * sc, a = gx0 + u * ct - v * st, b = gy0 + u * st + v * ct, gr = g.createRadialGradient(a, b, 0, a, b, r);
+      gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.07, 'rgba(235,240,255,1)'); gr.addColorStop(0.18, 'rgba(' + col + ',.8)'); gr.addColorStop(0.5, 'rgba(' + col + ',.22)'); gr.addColorStop(1, 'rgba(' + col + ',0)');
+      g.fillStyle = gr; g.fillRect(a - r, b - r, 2 * r, 2 * r); }
   }
-  const loop = () => { if (on && !document.hidden) frame(0.016); raf = requestAnimationFrame(loop); };
+  const loop = (t) => { const dt = Math.min(0.05, (t - last) / 1000 || 0); last = t; if (on && !document.hidden) frame(dt); requestAnimationFrame(loop); };
   size(); let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
   if (still) return;
   if ('IntersectionObserver' in window) new IntersectionObserver((e) => { on = e[0].isIntersecting; }).observe(c);
-  raf = requestAnimationFrame(loop);
+  requestAnimationFrame(loop);
 })();
 </script>
 </body>
