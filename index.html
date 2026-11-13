@@ -83,6 +83,7 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .facts h3 { margin: 0; font-size: 14px; letter-spacing: 0.14em; color: var(--c, var(--core)); }
 .facts p { color: var(--ink); font-size: 21px; }
 .facts .n { color: var(--amber); }
+.intro { color: var(--dim); max-width: 58ch; }
 
 .letter { display: flex; flex-direction: column; gap: 16px; }
 .letter p { max-width: 62ch; }
@@ -153,21 +154,22 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
   <div class="wrap">
     <figure class="shot">
       <div class="device"><img src="img/fight.jpg" alt="A late wave: enemy swarms crowd the road toward a line of towers while a black hole pulls at the field." width="1864" height="860"></div>
-      <figcaption><b>Wave 48.</b> A black hole event is on the board.</figcaption>
+      <figcaption><b>Wave 48.</b> A black hole event opens beside the road, and the swarm keeps coming.</figcaption>
     </figure>
   </div>
 </section>
 
 <section class="brief">
   <div class="wrap">
-    <div class="head"><span class="lbl">The game</span><h2>What Is In It</h2></div>
+    <div class="head"><span class="lbl">The game</span><h2>What You Are Getting Into</h2>
+      <p class="intro">Every run starts simple: build towers, hold the core. Then the systems stack up. Towers, talents, Fusions, strains and bosses all feed into each other, and that is where the skill cap lives.</p></div>
     <ul class="facts">
-      <li style="--c: var(--core)"><h3>Lift Off</h3><p>The core is your base. It can Lift Off and land in a new spot. If it lands on a tower, it docks and fires that tower's weapon at <span class="n">×2 damage</span>.</p></li>
-      <li style="--c: var(--amber)"><h3>Towers and Talents</h3><p><span class="n">19</span> towers and <span class="n">7</span> Talent trees. Every tower has upgrades, affixes and veteran ranks. Different builds play differently.</p></li>
-      <li style="--c: var(--bad)"><h3>Enemies That Adapt</h3><p>Enemy strains evolve against the towers you build. A boss arrives every <span class="n">10</span> waves.</p></li>
-      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run continues until the core is destroyed. Zones, wormholes and events change the board during a run.</p></li>
-      <li style="--c: var(--cryo)"><h3>Daily Hunt</h3><p>One new board each day. Every player gets the same <span class="n">40</span>-point build.</p></li>
-      <li style="--c: var(--ink)"><h3>Generated Music</h3><p>The game composes its soundtrack while you play. There are <span class="n">13</span> boss themes.</p></li>
+      <li style="--c: var(--core)"><h3>Your Base Can Fly</h3><p>Your core is not bolted down. Tap Lift Off, pick a landing spot, and the swarm reroutes to follow you. Land on a tower and the core takes its gun: <span class="n">×2</span> damage and +1 range, while its own gun keeps firing.</p></li>
+      <li style="--c: var(--amber)"><h3>Builds That Play Differently</h3><p><span class="n">19</span> towers with upgrades, affixes and veteran ranks. <span class="n">7</span> Talent trees, each with a Capstone that changes how you play. Put 8 points into two trees to open their Fusion. There are <span class="n">21</span>, like Hot Rounds: Kinetic hits set enemies on fire.</p></li>
+      <li style="--c: var(--bad)"><h3>A Swarm That Adapts</h3><p>Every few waves the swarm reads your defense and sends a strain built to beat it. You get one wave of warning, and selling is free until it lands. Whatever ends your run comes back next time as your Nemesis.</p></li>
+      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run lasts until your core falls. A boss arrives every <span class="n">10</span> waves, each with phases and its own theme. Wormholes open new roads, and <span class="n">21</span> Anomalies trade power for risk, like Glass Sky: +35% damage, but no core shield.</p></li>
+      <li style="--c: var(--cryo)"><h3>Daily Hunt</h3><p>One map a day, with the same talent build for every player. Your first run counts. Every bounty you claim is a choice: Extract and end the run as a win, or push on for <span class="n">×1.25</span> score.</p></li>
+      <li style="--c: var(--ink)"><h3>Music That Writes Itself</h3><p>The soundtrack is composed live while you play, so it is never the same twice. Each of the <span class="n">13</span> bosses has its own theme. Open the Music Studio to change the genre, mix the parts or write your own tracks.</p></li>
     </ul>
   </div>
 </section>
@@ -176,12 +178,12 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
   <div class="wrap">
     <div class="pair">
       <figure class="shot">
-        <img src="img/leia.jpg" alt="Boss card for Leia, a grey and white cat: Sits On Your Keyboard." width="1864" height="860" loading="lazy">
-        <figcaption><b>Leia.</b> She is a boss. She is based on my cat, who destroys couches.</figcaption>
+        <img src="img/leia.jpg" alt="Leia, a giant grey and white cat boss, walks the road through a field of towers at Wave 32." width="1864" height="860" loading="lazy">
+        <figcaption><b>Leia.</b> A boss based on my own cat. She shreds towers offline like they are the couch, then naps in the middle of the road.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="img/talents.jpg" alt="The Talents screen with the Ballistics tree open and 14 points spent." width="1864" height="860" loading="lazy">
-        <figcaption><b>Talents.</b> Rows open at 3 points and Capstones open at 12 points.</figcaption>
+        <img src="img/talents.jpg" alt="The Talents screen: the Ballistics tree open, with 14 points spent and 53 to spend." width="1864" height="860" loading="lazy">
+        <figcaption><b>Talents.</b> Seven trees. Rows open every 3 points, and a Capstone at 12 changes how you play.</figcaption>
       </figure>
     </div>
   </div>
@@ -192,7 +194,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
     <div class="story">
     <div class="letter">
       <div class="head"><span class="lbl">From the developer</span><h2>Why I Made It</h2></div>
-      <p>I'm not a coder, and I'm not an artistic person. I'm a gamer with a really good understanding of mechanics, and I had an idea to make a game for the players.</p>
+      <p>I'm not a coder, and I'm not an artistic person. I'm a gamer with a really good understanding of game mechanics, and I had an idea to make a game for the players.</p>
       <p>I built Last Gradient together with AI. We worked on the code, the art and the music together. The decisions were mine, and I closely criticized the outputs. I don't have a team to help.</p>
       <p>I'm not here to get rich. I have a day job. I'm tired of the predatory games on the market today. You know the microtransaction-riddled crap I'm talking about.</p>
       <p>This game serves as a letter to the games of old, the ones you just played and enjoyed. The games that developers spent time on to make great. I want to detach myself from the corporate slop that gaming has become.</p>
