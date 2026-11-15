@@ -18,24 +18,25 @@
 <style>html{background:#07080f}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Silkscreen:wght@700&display=swap">
 <style>
 /* Layout: a left-aligned console column over the hangar sky. Title and sign-up first, then proof (screens), then the briefing. One dark world, the game's own. */
 :root {
   --bg: #07080f; --panel: #0e1121; --panel2: #151933; --line: #2a2f52; --line2: #3a4170;
-  --ink: #e9e4d4; --dim: #9a99b8; --amber: #ffb03a; --core: #59f0b4; --bad: #ff4d6a; --void: #b86cff; --cryo: #6ae2ff;
-  --f-pix: 'Silkscreen', 'Courier New', monospace; --f-term: 'VT323', 'Courier New', monospace;
+  --ink: #e9e4d4; --dim: #9a99b8; --amber: #ffb03a; --core: #59f0b4; --bad: #ff4d6a; --void: #b86cff; --cryo: #6ae2ff; --solar: #ff7b39;
+  --f-logo: 'Silkscreen', 'Courier New', monospace; --f-pix: 'Oxanium', 'Courier New', monospace; --f-term: 'Oxanium', 'Courier New', monospace;
   --cut: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   --w: 1120px;
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-term); font-size: 22px; line-height: 1.25; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-term); font-size: 18px; line-height: 1.45; }
 .wrap { max-width: var(--w); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-h1, h2, h3, .lbl, button, .tag { font-family: var(--f-pix); font-weight: 400; }
-h2 { font-size: clamp(20px, 3vw, 28px); letter-spacing: 0.08em; margin: 0; text-wrap: balance; color: var(--ink); }
+h2, h3, .lbl, button, .tag { font-family: var(--f-pix); font-weight: 700; text-transform: uppercase; }
+h1 { font-family: var(--f-logo); font-weight: 700; }
+h2 { font-size: clamp(22px, 3vw, 30px); letter-spacing: 0.06em; line-height: 1.15; margin: 0; text-wrap: balance; color: var(--ink); }
 p { margin: 0; max-width: 60ch; }
-.lbl { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+.lbl { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
 a { color: var(--cryo); }
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
@@ -46,26 +47,27 @@ a { color: var(--cryo); }
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); }
 .hero .wrap { position: relative; padding-block: clamp(40px, 8vw, 96px) clamp(36px, 6vw, 72px); display: flex; flex-direction: column; gap: 28px; }
 .status { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
-.tag { font-size: 11px; letter-spacing: 0.2em; padding: 6px 10px; color: var(--bg); background: var(--core); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
+.tag { font-size: 12px; letter-spacing: 0.18em; padding: 6px 10px; color: var(--bg); background: var(--core); clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px); }
 h1 { margin: 0; line-height: 0.95; position: relative; width: fit-content; max-width: 100%; }
 h1 .last { display: block; font-size: clamp(16px, 3.4vw, 34px); letter-spacing: 0.55em; margin-bottom: 0.35em; color: var(--ink); text-shadow: 2px 0 var(--bad), -2px 0 var(--cryo); }
 h1 .grad { display: block; font-weight: 700; font-size: clamp(38px, 10.5vw, 118px); letter-spacing: 0.02em;
   background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 34%, var(--cryo) 62%, var(--void) 86%, transparent 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(3px 0 0 rgba(255, 77, 106, 0.55)); }
 #shards { position: absolute; right: -14%; top: 20%; width: 46%; height: 90%; pointer-events: none; }
-.pitch { font-size: clamp(24px, 3vw, 32px); line-height: 1.15; max-width: 28ch; }
-.pitch b { color: var(--amber); font-weight: 400; }
+.pitch { font-size: clamp(21px, 2.6vw, 27px); line-height: 1.3; max-width: 30ch; font-weight: 600; }
+.pitch b { color: var(--amber); font-weight: 600; }
+.lore { color: var(--dim); max-width: 44ch; padding-left: 14px; box-shadow: inset 2px 0 0 var(--cryo); }
 
 /* ---- sign-up ---- */
 .signup { display: flex; flex-direction: column; gap: 10px; max-width: 520px; }
 .signup .row { display: flex; flex-wrap: wrap; gap: 10px; }
-.signup input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 22px; color: var(--ink); background: rgba(14, 17, 33, 0.88); border: 0; box-shadow: inset 0 0 0 2px var(--line2); padding: 12px 14px; clip-path: var(--cut); }
+.signup input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 18px; color: var(--ink); background: rgba(14, 17, 33, 0.88); border: 0; box-shadow: inset 0 0 0 2px var(--line2); padding: 12px 14px; clip-path: var(--cut); }
 .signup input::placeholder { color: var(--dim); }
 .signup input:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--amber); }
 .signup button { flex: 0 0 auto; font-size: 14px; letter-spacing: 0.18em; color: #0b0b12; background: var(--amber); border: 0; padding: 14px 22px; cursor: pointer; clip-path: var(--cut); box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22); }
 .signup button:hover { background: #ffc264; }
-.signup small { font-size: 18px; color: var(--dim); }
-.signup .msg { font-size: 20px; color: var(--core); min-height: 1.25em; }
+.signup small { font-size: 15px; color: var(--dim); }
+.signup .msg { font-size: 16px; color: var(--core); min-height: 1.25em; }
 .signup .msg.err { color: var(--bad); }
 
 /* ---- sections ---- */
@@ -73,26 +75,26 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .head { display: flex; flex-direction: column; gap: 10px; }
 .shot { margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .shot img { display: block; width: 100%; height: auto; clip-path: var(--cut); box-shadow: 0 0 0 1px var(--line2); image-rendering: auto; background: var(--panel); }
-.shot figcaption { font-size: 20px; color: var(--dim); max-width: 60ch; }
-.shot figcaption b { color: var(--ink); font-weight: 400; }
+.shot figcaption { font-size: 16px; color: var(--dim); max-width: 64ch; }
+.shot figcaption b { color: var(--ink); font-weight: 600; }
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 26px; }
 
 .brief { border-block: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), var(--bg)); }
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .facts li { padding: 20px 22px 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.facts h3 { margin: 0; font-size: 14px; letter-spacing: 0.14em; color: var(--c, var(--core)); }
-.facts p { color: var(--ink); font-size: 21px; }
-.facts .n { color: var(--amber); }
+.facts h3 { margin: 0; font-size: 15px; letter-spacing: 0.1em; color: var(--c, var(--core)); }
+.facts p { color: var(--ink); font-size: 17px; }
+.facts .n { color: var(--amber); font-weight: 700; }
 .intro { color: var(--dim); max-width: 58ch; }
 
 .letter { display: flex; flex-direction: column; gap: 16px; }
 .letter p { max-width: 62ch; }
-.letter .sig { font-family: var(--f-pix); font-size: 16px; letter-spacing: 0.12em; color: var(--amber); }
+.letter .sig { font-family: var(--f-pix); font-weight: 700; font-size: 18px; letter-spacing: 0.12em; color: var(--amber); }
 .deal { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px 34px; }
 .deal li { padding-left: 20px; position: relative; }
 .deal li::before { content: ""; position: absolute; left: 0; top: 0.42em; width: 9px; height: 9px; background: var(--core); }
 
-footer .wrap { padding-block: 28px 40px; display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; color: var(--dim); font-size: 19px; border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 28px 40px; display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; color: var(--dim); font-size: 15px; border-top: 1px solid var(--line); }
 footer span.sel { color: var(--ink); user-select: all; }
 
 /* faint stars so the dark areas are not empty */
@@ -102,37 +104,37 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 /* ---- PC layout: wider column, larger type, the game shot overlaps the hero, the letter gets a side panel ---- */
 @media (min-width: 1000px) {
   :root { --w: 1320px; }
-  body { font-size: 26px; }
-  .lbl, .tag { font-size: 13px; }
-  h2 { font-size: 38px; }
+  body { font-size: 21px; }
+  .lbl, .tag { font-size: 14px; }
+  h2 { font-size: 40px; }
   .hero { border-bottom: 0; }
   .hero .wrap { padding-block: clamp(56px, 9vh, 110px) 250px; gap: 34px; }
   h1 .last { font-size: 44px; }
   h1 .grad { font-size: clamp(118px, 9vw, 168px); }
-  .pitch { font-size: 40px; max-width: 30ch; }
+  .pitch { font-size: 33px; max-width: 30ch; }
+  .lore { font-size: 23px; }
   .signup { max-width: 620px; }
-  .signup input { font-size: 26px; padding: 15px 18px; }
+  .signup input { font-size: 21px; padding: 15px 18px; }
   .signup button { font-size: 16px; padding: 17px 30px; }
-  .signup small { font-size: 21px; }
-  .signup .msg { font-size: 23px; }
+  .signup small { font-size: 17px; }
+  .signup .msg { font-size: 18px; }
   .lead { margin-top: -190px; position: relative; }
   .lead .wrap { padding-top: 0; }
   .device { padding: 16px; background: #04050a; border-radius: 52px; box-shadow: 0 0 0 2px var(--line2), 0 0 0 10px rgba(14,17,33,.9), 0 50px 140px rgba(106,226,255,.10), 0 40px 90px rgba(0,0,0,.7); }
   .device img { border-radius: 36px; clip-path: none; box-shadow: none; }
-  .shot figcaption { font-size: 23px; }
+  .shot figcaption { font-size: 19px; }
   .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .facts li { padding: 30px 40px 34px 0; gap: 12px; }
   .facts h3 { font-size: 20px; }
-  .facts p { font-size: 25px; }
-  .facts .n { font-family: var(--f-pix); font-size: 0.86em; }
+  .facts p { font-size: 19px; }
   .pair { gap: 40px; }
   .story { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 90px; align-items: start; }
   .letter { gap: 20px; }
   .side { position: sticky; top: 40px; padding: 36px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line2); clip-path: var(--cut); gap: 28px; }
   .deal { flex-direction: column; gap: 12px; }
-  footer .wrap { font-size: 22px; }
+  footer .wrap { font-size: 18px; }
 }
-@media (max-width: 640px) { #sky { inset: 0; width: 100%; opacity: 0.5; -webkit-mask-image: none; mask-image: none; } #shards { display: none; } body { font-size: 20px; } }
+@media (max-width: 640px) { #sky { inset: 0; width: 100%; opacity: 0.5; -webkit-mask-image: none; mask-image: none; } #shards { display: none; } body { font-size: 17px; } }
 </style>
 
 <header class="hero">
@@ -141,6 +143,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
     <div class="status"><span class="tag">COMING SOON</span><span class="lbl">iPhone and iPad · Tower defense</span></div>
     <h1 aria-label="Last Gradient"><span class="last">LAST</span><span class="grad">GRADIENT</span><canvas id="shards" aria-hidden="true"></canvas></h1>
     <p class="pitch">A deep, retro space tower defense. <b>Easy to pick up, hard to master.</b> Endless runs. No ads.</p>
+    <p class="lore">The Last Gradient is the last fire in a dead universe. Everything that survived the dark wants it. You hold it.</p>
     <form class="signup" id="signupTop" novalidate>
       <label class="lbl" for="emailTop">Launch news</label>
       <div class="row"><input id="emailTop" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><button type="submit">NOTIFY ME</button></div>
@@ -153,8 +156,8 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 <section class="lead">
   <div class="wrap">
     <figure class="shot">
-      <div class="device"><img src="img/fight.jpg" alt="A late wave: enemy swarms crowd the road toward a line of towers while a black hole pulls at the field." width="1864" height="860"></div>
-      <figcaption><b>Wave 48.</b> A black hole event opens beside the road, and the swarm keeps coming.</figcaption>
+      <div class="device"><img src="img/fight.jpg" alt="Wave 49: a Black Hole sits beside the road among the towers, its feed meter at 11 of 18, while the swarm presses toward the core." width="1864" height="860"></div>
+      <figcaption><b>Wave 49.</b> A Black Hole has landed beside the road. Feed it 18 kills before it closes and it collapses on the swarm. Starve it and it spits enemies back out.</figcaption>
     </figure>
   </div>
 </section>
@@ -167,9 +170,12 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <li style="--c: var(--core)"><h3>Your Base Can Fly</h3><p>Your core is not bolted down. Tap Lift Off, pick a landing spot, and the swarm reroutes to follow you. Land on a tower and the core takes its gun: <span class="n">×2</span> damage and +1 range, while its own gun keeps firing.</p></li>
       <li style="--c: var(--amber)"><h3>Builds That Play Differently</h3><p><span class="n">19</span> towers with upgrades, affixes and veteran ranks. <span class="n">7</span> Talent trees, each with a Capstone that changes how you play. Put 8 points into two trees to open their Fusion. There are <span class="n">21</span>, like Hot Rounds: Kinetic hits set enemies on fire.</p></li>
       <li style="--c: var(--bad)"><h3>A Swarm That Adapts</h3><p>Every few waves the swarm reads your defense and sends a strain built to beat it. You get one wave of warning, and selling is free until it lands. Whatever ends your run comes back next time as your Nemesis.</p></li>
-      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run lasts until your core falls. A boss arrives every <span class="n">10</span> waves, each with phases and its own theme. Wormholes open new roads, and <span class="n">21</span> Anomalies trade power for risk, like Glass Sky: +35% damage, but no core shield.</p></li>
-      <li style="--c: var(--cryo)"><h3>Daily Hunt</h3><p>One map a day, with the same talent build for every player. Your first run counts. Every bounty you claim is a choice: Extract and end the run as a win, or push on for <span class="n">×1.25</span> score.</p></li>
+      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run lasts until your core falls. A boss arrives every <span class="n">10</span> waves, each with phases and its own theme. Wormholes open new roads, and the wave before one lands is a checkpoint: <span class="n">90</span> seconds to rebuild, with full refunds. <span class="n">21</span> Anomalies trade power for risk, like Glass Sky: +35% damage, but no core shield.</p></li>
+      <li style="--c: var(--cryo)"><h3>Send the Probe</h3><p>Your probe is a small ship of your own. Send it to wreckage, gas clouds and asteroids, and it brings the salvage home by itself. Fly it into a storm to harvest an ability charge: an Ion Storm gives you a Strike, a Cryo Front a Stasis.</p></li>
+      <li style="--c: var(--solar)"><h3>The Map Fights Back</h3><p>Storms drift across the map. Each one boosts an element and hits the enemies under it: Ion Storms throw lightning, Solar Flares set them burning. A Black Hole wants kills. Feed it and it blasts the swarm, or aim a Strike inside it for a Gravity Bomb.</p></li>
+      <li style="--c: var(--core)"><h3>Daily Hunt</h3><p>One map a day. Every pilot gets the same talent build and the same big dice rolls, so the best play wins. Your first run counts. Every bounty you claim is a choice: Extract and end the run as a win, or push on for <span class="n">×1.25</span> score. It opens at Level <span class="n">20</span>.</p></li>
       <li style="--c: var(--ink)"><h3>Music That Writes Itself</h3><p>The soundtrack is composed live while you play, so it is never the same twice. Each of the <span class="n">13</span> bosses has its own theme. Open the Music Studio to change the genre, mix the parts or write your own tracks.</p></li>
+      <li style="--c: var(--amber)"><h3>Training Shows You How</h3><p>Training is one guided run of about <span class="n">10</span> minutes. It teaches the core, the probe, Lift Off and your first boss as each one comes up. The Field Manual explains every system when you want the detail.</p></li>
     </ul>
   </div>
 </section>
