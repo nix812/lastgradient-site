@@ -77,6 +77,7 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .shot img { display: block; width: 100%; height: auto; clip-path: var(--cut); box-shadow: 0 0 0 1px var(--line2); image-rendering: auto; background: var(--panel); }
 .shot figcaption { font-size: 16px; color: var(--dim); max-width: 64ch; }
 .shot figcaption b { color: var(--ink); font-weight: 600; }
+.music { border-top: 1px solid var(--line); background: radial-gradient(60% 50% at 85% 0%, rgba(255,176,58,.07), transparent 70%); }
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 26px; }
 
 .brief { border-block: 1px solid var(--line); background: linear-gradient(180deg, var(--panel), var(--bg)); }
@@ -174,7 +175,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <li style="--c: var(--cryo)"><h3>Send the Probe</h3><p>Your probe is a small ship of your own. Send it to wreckage, gas clouds and asteroids, and it brings the salvage home by itself. Fly it into a storm to harvest an ability charge: an Ion Storm gives you a Strike, a Cryo Front a Stasis.</p></li>
       <li style="--c: var(--solar)"><h3>The Map Fights Back</h3><p>Storms drift across the map. Each one boosts an element and hits the enemies under it: Ion Storms throw lightning, Solar Flares set them burning. A Black Hole wants kills. Feed it and it blasts the swarm, or aim a Strike inside it for a Gravity Bomb.</p></li>
       <li style="--c: var(--core)"><h3>Daily Hunt</h3><p>One map a day. Every pilot gets the same talent build and the same big dice rolls, so the best play wins. Your first run counts. Every bounty you claim is a choice: Extract and end the run as a win, or push on for <span class="n">×1.25</span> score. It opens at Level <span class="n">20</span>.</p></li>
-      <li style="--c: var(--ink)"><h3>Music That Writes Itself</h3><p>The soundtrack is composed live while you play, so it is never the same twice. Each of the <span class="n">13</span> bosses has its own theme. Open the Music Studio to change the genre, mix the parts or write your own tracks.</p></li>
+      <li style="--c: var(--ink)"><h3>Music That Writes Itself</h3><p>The soundtrack is composed live while you play, so it is never the same twice. Each of the <span class="n">13</span> bosses has its own theme. Open the Music Studio to change the genre, mix the parts or write your own tracks. <a href="#music">See the Studio</a>.</p></li>
       <li style="--c: var(--amber)"><h3>Training Shows You How</h3><p>Training is one guided run of about <span class="n">10</span> minutes. It teaches the core, the probe, Lift Off and your first boss as each one comes up. The Field Manual explains every system when you want the detail.</p></li>
     </ul>
   </div>
@@ -190,6 +191,35 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <figure class="shot">
         <img src="img/talents.jpg" alt="The Talents screen: the Ballistics tree open, with 14 points spent and 53 to spend." width="1864" height="860" loading="lazy">
         <figcaption><b>Talents.</b> Seven trees. Rows open every 3 points, and a Capstone at 12 changes how you play.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="music" id="music">
+  <div class="wrap">
+    <div class="head"><span class="lbl">The music</span><h2>The Music Studio</h2>
+      <p class="intro">There is no playlist. The game composes its music live from <span class="n">10</span> genres and <span class="n">40</span> styles, and every song gets its own name. It follows the fight: when the swarm gets heavy, the music builds with it. Keep the songs you like, shape the sound, or write your own.</p></div>
+    <figure class="shot wide">
+      <img src="img/music-listen.jpg" alt="The Music Studio on the Listen tab: the song playing at the top with back, pause, skip, repeat, keep and share buttons; vibe and genre buttons on the left; three kept songs under My Tracks on the right." width="1864" height="860" loading="lazy">
+      <figcaption><b>Listen.</b> Pick a vibe (Calm, Club, Retro or Everything) or choose the genres yourself, from Ambient and Lo-fi to Techno and Drum &amp; Bass. Tap the heart to keep a song. Kept songs go to My Tracks, where you can rename them and share them as a code that a friend pastes in.</figcaption>
+    </figure>
+    <div class="pair">
+      <figure class="shot">
+        <img src="img/music-shape.jpg" alt="The Shape tab: sliders for Energy, Follow battle and Tempo, song length buttons, a six-channel mixer, and effect sliders." width="1864" height="860" loading="lazy">
+        <figcaption><b>Shape.</b> Set the energy, how hard the music follows the battle, the tempo and the song length. Six mixer channels, from pads to lead: tap one to mute it. Then add reverb, echo, tape and vinyl.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/music-compose.jpg" alt="The Compose tab: style, mood, key, tempo and chord pickers on the left, and a 16-step drum grid with kick, snare, clap and hat rows on the right." width="1864" height="860" loading="lazy">
+        <figcaption><b>Compose.</b> Pick a style, a mood, a key and the chords. Then draw the beat on a 16-step grid and the melody on its own grid. It plays while you edit, and Save puts it in My Tracks.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/music-bosses.jpg" alt="The boss themes list: Behemoth, Hive Queen, Phase Wraith, Leia and other bosses, each with its theme name, and some still locked." width="1864" height="860" loading="lazy">
+        <figcaption><b>Boss themes.</b> Each of the <span class="n">13</span> bosses has its own theme, like Leia's Couch Shredder. Beat a boss to unlock its theme in the Studio.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/music-deck.jpg" alt="A fight at Wave 23 with the small music deck open at the top left: back, song name, keep and skip." width="1864" height="860" loading="lazy">
+        <figcaption><b>In a fight.</b> Tap Music for a small deck over the field. Go back, keep or skip a song without leaving the run.</figcaption>
       </figure>
     </div>
   </div>
