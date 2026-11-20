@@ -77,6 +77,9 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .shot img { display: block; width: 100%; height: auto; clip-path: var(--cut); box-shadow: 0 0 0 1px var(--line2); image-rendering: auto; background: var(--panel); }
 .shot figcaption { font-size: 16px; color: var(--dim); max-width: 64ch; }
 .shot figcaption b { color: var(--ink); font-weight: 600; }
+.callout { margin: 30px 0 34px; padding: 20px 22px; max-width: 72ch; border: 1px solid var(--line); box-shadow: inset 3px 0 0 var(--cryo); background: rgba(106,226,255,.04); }
+.callout h3 { margin: 0 0 8px; font-size: 15px; letter-spacing: 0.1em; color: var(--cryo); }
+.callout p { margin: 0; }
 .music { border-top: 1px solid var(--line); background: radial-gradient(60% 50% at 85% 0%, rgba(255,176,58,.07), transparent 70%); }
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 26px; }
 
@@ -211,11 +214,15 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 <section class="music" id="music">
   <div class="wrap">
     <div class="head"><span class="lbl">The music</span><h2>The Music Studio</h2>
-      <p class="intro">There is no playlist. The game composes its music live from <span class="n">10</span> genres and <span class="n">40</span> styles, and every song gets its own name. It follows the fight: when the swarm gets heavy, the music builds with it. Keep the songs you like, shape the sound, or write your own.</p></div>
+      <p class="intro">There is no playlist. The game composes its music live from <span class="n">10</span> genres and <span class="n">40</span> styles, and every song gets its own name. It follows the fight: when the swarm gets heavy, the music builds with it. Keep the songs you like, shape the sound, write your own, and share them with friends.</p></div>
     <figure class="shot wide">
       <img src="img/music-listen.jpg" alt="The Music Studio on the Listen tab: the song playing at the top with back, pause, skip, repeat, keep and share buttons; vibe and genre buttons on the left; three kept songs under My Tracks on the right." width="1864" height="860" loading="lazy">
-      <figcaption><b>Listen.</b> Pick a vibe (Calm, Club, Retro or Everything) or choose the genres yourself, from Ambient and Lo-fi to Techno and Drum &amp; Bass. Tap the heart to keep a song. Kept songs go to My Tracks, where you can rename them and share them as a code that a friend pastes in.</figcaption>
+      <figcaption><b>Listen.</b> Pick a vibe (Calm, Club, Retro or Everything) or choose the genres yourself, from Ambient and Lo-fi to Techno and Drum &amp; Bass. Tap the heart to keep a song you like. Kept songs go to My Tracks, where you can rename them.</figcaption>
     </figure>
+    <div class="callout">
+      <h3>Share Songs With Friends</h3>
+      <p>Every song has a share button. Tap it and the game copies a short code. Send that code to a friend in any message. They tap Paste a code in My Tracks, and the same song is in their game. It works for the songs you write in Compose too, so you can trade tracks back and forth. No account and no sign-in.</p>
+    </div>
     <div class="pair">
       <figure class="shot">
         <img src="img/music-shape.jpg" alt="The Shape tab: sliders for Energy, Follow battle and Tempo, song length buttons, a six-channel mixer, and effect sliders." width="1864" height="860" loading="lazy">
@@ -231,7 +238,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       </figure>
       <figure class="shot">
         <img src="img/music-deck.jpg" alt="A fight at Wave 24 with the small music deck open at the top left: back, song name, keep and skip." width="1864" height="860" loading="lazy">
-        <figcaption><b>In a fight.</b> Tap Music for a small deck over the field. Go back, keep or skip a song without leaving the run.</figcaption>
+        <figcaption><b>In a fight.</b> Tap Music for a small deck over the field. Go back, skip, or tap the heart to like a song and keep it in My Tracks, all without leaving the run.</figcaption>
       </figure>
     </div>
   </div>
