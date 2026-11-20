@@ -86,6 +86,7 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .facts h3 { margin: 0; font-size: 15px; letter-spacing: 0.1em; color: var(--c, var(--core)); }
 .facts p { color: var(--ink); font-size: 17px; }
 .facts .n { color: var(--amber); font-weight: 700; }
+.facts a { color: var(--cryo); text-underline-offset: 3px; }
 .intro { color: var(--dim); max-width: 58ch; }
 
 .letter { display: flex; flex-direction: column; gap: 16px; }
@@ -157,8 +158,8 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 <section class="lead">
   <div class="wrap">
     <figure class="shot">
-      <div class="device"><img src="img/fight.jpg" alt="Wave 49: a Black Hole sits beside the road among the towers, its feed meter at 11 of 18, while the swarm presses toward the core." width="1864" height="860"></div>
-      <figcaption><b>Wave 49.</b> A Black Hole has landed beside the road. Feed it 18 kills before it closes and it collapses on the swarm. Starve it and it spits enemies back out.</figcaption>
+      <div class="device"><img src="img/fight.jpg" alt="Wave 48: a Black Hole has landed among the towers. Its Mass meter reads 9 of 18 with 33 seconds left, and a tower near it is slipping toward the center." width="1864" height="860"></div>
+      <figcaption><b>Wave 48.</b> A Black Hole has landed on my biggest build and is pulling towers in. Feed it the swarm in 45 seconds and it bursts into a White Hole. Starve it and it keeps the towers it ate for a few waves.</figcaption>
     </figure>
   </div>
 </section>
@@ -171,12 +172,15 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <li style="--c: var(--core)"><h3>Your Base Can Fly</h3><p>Your core is not bolted down. Tap Lift Off, pick a landing spot, and the swarm reroutes to follow you. Land on a tower and the core takes its gun: <span class="n">×2</span> damage and +1 range, while its own gun keeps firing.</p></li>
       <li style="--c: var(--amber)"><h3>Builds That Play Differently</h3><p><span class="n">19</span> towers with upgrades, affixes and veteran ranks. <span class="n">7</span> Talent trees, each with a Capstone that changes how you play. Put 8 points into two trees to open their Fusion. There are <span class="n">21</span>, like Hot Rounds: Kinetic hits set enemies on fire.</p></li>
       <li style="--c: var(--bad)"><h3>A Swarm That Adapts</h3><p>Every few waves the swarm reads your defense and sends a strain built to beat it. You get one wave of warning, and selling is free until it lands. Whatever ends your run comes back next time as your Nemesis.</p></li>
-      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run lasts until your core falls. A boss arrives every <span class="n">10</span> waves, each with phases and its own theme. Wormholes open new roads, and the wave before one lands is a checkpoint: <span class="n">90</span> seconds to rebuild, with full refunds. <span class="n">21</span> Anomalies trade power for risk, like Glass Sky: +35% damage, but no core shield.</p></li>
+      <li style="--c: var(--bad)"><h3>Two Enemy Families</h3><p>The hive wants the core's energy to feed on: Gnawers, Clutches that burst into Swarmers, Nurses that heal the pack, Matrons that drop broods. From Wave <span class="n">8</span> the Remnant join them, the war machines of every pilot before you, still running. Elites come Overgrown, covered in glowing spines.</p></li>
+      <li style="--c: var(--amber)"><h3>Thirteen Bosses</h3><p>A boss arrives every <span class="n">10</span> waves, with phases, powers and its own theme. Five are hive monsters, like the Titan, whose shell breaks off as you hit it. The other eight are stranger, like Quackzilla, the Immortal Snail, The Auditor and Leia, my cat.</p></li>
+      <li style="--c: var(--void)"><h3>Endless Waves</h3><p>A run lasts until your core falls. Wormholes open new roads, and the wave before one lands is a checkpoint: <span class="n">90</span> seconds to move towers, rebuild and respec for free. <span class="n">21</span> Anomalies trade power for risk, like Glass Sky: +35% damage, but no core shield.</p></li>
       <li style="--c: var(--cryo)"><h3>Send the Probe</h3><p>Your probe is a small ship of your own. Send it to wreckage, gas clouds and asteroids, and it brings the salvage home by itself. Fly it into a storm to harvest an ability charge: an Ion Storm gives you a Strike, a Cryo Front a Stasis.</p></li>
-      <li style="--c: var(--solar)"><h3>The Map Fights Back</h3><p>Storms drift across the map. Each one boosts an element and hits the enemies under it: Ion Storms throw lightning, Solar Flares set them burning. A Black Hole wants kills. Feed it and it blasts the swarm, or aim a Strike inside it for a Gravity Bomb.</p></li>
+      <li style="--c: var(--solar)"><h3>The Map Fights Back</h3><p>Storms drift across the map. Each one boosts an element and hits the enemies under it: Ion Storms throw lightning, Solar Flares set them burning. A Black Hole eats your towers. Feed it the swarm and it bursts into a White Hole that leaves a Newborn Star.</p></li>
       <li style="--c: var(--core)"><h3>Daily Hunt</h3><p>One map a day. Every pilot gets the same talent build and the same big dice rolls, so the best play wins. Your first run counts. Every bounty you claim is a choice: Extract and end the run as a win, or push on for <span class="n">×1.25</span> score. It opens at Level <span class="n">20</span>.</p></li>
+      <li style="--c: var(--void)"><h3>Ranks That Take Time</h3><p>Every run feeds your career rank, from Recruit to Fleet Admiral and then up through the star classes to Keeper of the Gradient. The high ranks also need days served, so nobody rushes to the top. Supernova resets your talents for a permanent bonus, a new emblem and a wider core light.</p></li>
       <li style="--c: var(--ink)"><h3>Music That Writes Itself</h3><p>The soundtrack is composed live while you play, so it is never the same twice. Each of the <span class="n">13</span> bosses has its own theme. Open the Music Studio to change the genre, mix the parts or write your own tracks. <a href="#music">See the Studio</a>.</p></li>
-      <li style="--c: var(--amber)"><h3>Training Shows You How</h3><p>Training is one guided run of about <span class="n">10</span> minutes. It teaches the core, the probe, Lift Off and your first boss as each one comes up. The Field Manual explains every system when you want the detail.</p></li>
+      <li style="--c: var(--amber)"><h3>Training Shows You How</h3><p>Basic Training is one guided run. It teaches the core, the probe, Lift Off and your first boss as each one comes up. Advanced Training covers the deeper systems, and the Field Manual explains everything else when you want the detail.</p></li>
     </ul>
   </div>
 </section>
@@ -189,8 +193,16 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
         <figcaption><b>Leia.</b> A boss based on my own cat. She shreds towers offline like they are the couch, then naps in the middle of the road.</figcaption>
       </figure>
       <figure class="shot">
+        <img src="img/enemies.jpg" alt="Wave 34: spiked, glowing Overgrown hive elites push along the road in front of a Remnant squad of rusted war machines, while a Siege Crawler shells a tower." width="1864" height="860" loading="lazy">
+        <figcaption><b>The hive and the Remnant.</b> Overgrown elites, lit up by their spines, lead a Remnant squad down the road. Up top, a Siege Crawler has shelled a tower offline.</figcaption>
+      </figure>
+      <figure class="shot">
         <img src="img/talents.jpg" alt="The Talents screen: the Ballistics tree open, with 14 points spent and 53 to spend." width="1864" height="860" loading="lazy">
         <figcaption><b>Talents.</b> Seven trees. Rows open every 3 points, and a Capstone at 12 changes how you play.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/ranks.jpg" alt="The Ranks page: a Vice Admiral III career rank badge with 120 days served, a Supernova 3 emblem named Flare, and the row of service ranks below." width="1864" height="860" loading="lazy">
+        <figcaption><b>Ranks.</b> Your career rank counts every XP you ever earn, and a Supernova never takes it away. The ranks you have not reached stay hidden until you get close.</figcaption>
       </figure>
     </div>
   </div>
