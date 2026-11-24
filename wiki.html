@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wiki · Last Gradient</title>
+<meta name="description" content="How to play Last Gradient: every tower, talent, enemy, boss and system. Matches game version 6.17.6.">
+<meta property="og:title" content="Wiki · Last Gradient">
+<meta property="og:description" content="How to play Last Gradient: every tower, talent, enemy, boss and system. Matches game version 6.17.6.">
+<meta property="og:image" content="https://lastgradient.com/img/fight.jpg">
+<meta name="theme-color" content="#07080f">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap">
+<style>
+:root { --bg: #07080f; --panel: #0d0f1c; --line: #2a2f52; --ink: #e9e4d4; --dim: #9a99b8; --amber: #ffb03a; --core: #59f0b4; --bad: #ff4d6a; --void: #b86cff; --cryo: #6ae2ff;
+  --f: 'Oxanium', 'Courier New', monospace; color-scheme: dark; }
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; scroll-padding-top: 18px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f); font-size: 17px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 72px; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, .lbl, .nav a, summary { font-family: var(--f); font-weight: 700; text-transform: uppercase; margin: 0; }
+h1 { font-size: clamp(30px, 6vw, 52px); letter-spacing: 0.05em; line-height: 1.05; text-wrap: balance; }
+h2 { font-size: clamp(21px, 3vw, 28px); letter-spacing: 0.06em; color: var(--amber); padding-top: 26px; border-top: 1px solid var(--line); text-wrap: balance; }
+h3 { font-size: 15px; letter-spacing: 0.12em; color: var(--core); margin-top: 26px; }
+.lbl { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; color: var(--dim); }
+a { color: var(--cryo); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+p { margin: 0; max-width: 74ch; } em { color: var(--dim); font-style: normal; } .bad { color: #ff8a9c; }
+.nav { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; margin-bottom: 26px; }
+.nav a { font-size: 13px; letter-spacing: 0.16em; text-decoration: none; color: var(--dim); padding: 6px 0; }
+.nav a:hover, .nav a[aria-current] { color: var(--ink); } .nav a[aria-current] { box-shadow: inset 0 -2px 0 var(--amber); }
+.head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 26px; }
+.head p { color: var(--dim); }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+section { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+.toc summary { cursor: pointer; font-size: 13px; letter-spacing: 0.16em; color: var(--ink); padding: 12px 14px; border: 1px solid var(--line); background: var(--panel); list-style: none; }
+.toc summary::-webkit-details-marker { display: none; } .toc summary::after { content: " +"; color: var(--amber); } .toc[open] summary::after { content: " -"; }
+.toc ol { margin: 0; padding: 12px 14px; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px 16px; border: 1px solid var(--line); border-top: 0; }
+.toc a { display: block; padding: 5px 0; text-decoration: none; color: var(--dim); font-size: 15px; } .toc a:hover { color: var(--ink); }
+.find { display: flex; flex-direction: column; gap: 6px; }
+.find input { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); padding: 11px 13px; width: 100%; max-width: 460px; }
+.find input::placeholder { color: var(--dim); } #none { color: var(--dim); }
+.ent { margin: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px 20px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+dt { font-weight: 700; color: var(--ink); overflow-wrap: anywhere; } dt small { display: block; font-weight: 400; font-size: 13px; color: var(--dim); letter-spacing: 0.02em; }
+dd { margin: 0; min-width: 0; overflow-wrap: anywhere; } dd ul { margin: 6px 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 3px; color: var(--dim); } dd li b { color: var(--ink); font-weight: 600; }
+blockquote { margin: 0; padding: 4px 0 4px 16px; box-shadow: inset 2px 0 0 var(--cryo); max-width: 62ch; font-size: 18px; }
+.era { display: flex; flex-direction: column; gap: 4px; }
+.era > p { color: var(--dim); }
+.rel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 20px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.rel .v { font-weight: 700; font-variant-numeric: tabular-nums; } .rel .v b { color: var(--amber); } .rel .v small { display: block; font-weight: 400; font-size: 13px; color: var(--dim); }
+.rel .n { font-weight: 700; color: var(--core); text-transform: uppercase; letter-spacing: 0.08em; font-size: 14px; }
+.rel ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 5px; max-width: 78ch; }
+footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--dim); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+[hidden] { display: none !important; }
+@media (min-width: 720px) { .row { grid-template-columns: 250px minmax(0, 1fr); } .rel { grid-template-columns: 170px minmax(0, 1fr); } }
+@media (min-width: 1080px) {
+  .cols { grid-template-columns: 230px minmax(0, 1fr); gap: 44px; align-items: start; }
+  .toc { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; } .toc ol { grid-template-columns: 1fr; border: 0; padding: 8px 0 0; } .toc summary { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav" aria-label="Site"><a href="./">← Last Gradient</a><a href="wiki.html" aria-current="page">Wiki</a><a href="changelog.html">Changelog</a></nav>
+  <header class="head"><span class="lbl">How to play · matches game version 6.17.6 · updated November 24, 2026</span><h1>The Wiki</h1>
+    <p>Everything in Last Gradient, in one place. The numbers on this page come straight from the game's own data, so they match the version above. If something here is wrong or missing, tell me: nic@lastgradient.com. Fair warning: this page spoils enemies and bosses you have not met.</p>
+    <div class="find"><label class="lbl" for="q">Find on this page</label><input id="q" type="search" placeholder="Try: Burn, Leia, Capstone, probe" autocomplete="off"><span id="none" hidden>Nothing matches. Try a shorter word.</span></div></header>
+  <div class="cols"><details class="toc" open><summary>Contents</summary><ol><li><a href="#run">How a Run Works</a></li><li><a href="#core">The Core</a></li><li><a href="#power">Power and Placement</a></li><li><a href="#elements">Elements, Statuses and Combos</a></li><li><a href="#towers">Towers</a></li><li><a href="#affixes">Affixes, Legendaries and Curses</a></li><li><a href="#abilities">Abilities</a></li><li><a href="#talents">Talents</a></li><li><a href="#fusions">Fusions</a></li><li><a href="#enemies">Enemies</a></li><li><a href="#bosses">Bosses</a></li><li><a href="#map">The Map</a></li><li><a href="#probe">The Probe and Loot</a></li><li><a href="#entropy">Entropy and Anomalies</a></li><li><a href="#hunt">Bounties and the Daily Hunt</a></li><li><a href="#progress">Progression and Ranks</a></li><li><a href="#training">Training and the Field Manual</a></li><li><a href="#music">Music</a></li><li><a href="#story">The Story</a></li><li><a href="#extras">Settings and Extras</a></li></ol></details>
+  <main><section id="run"><h2>How a Run Works</h2>
+<p data-f>Enemies walk the roads to your core. You build towers to stop them. A run lasts until your core falls, a boss reaches the core, or you choose to Extract with a win.</p>
+<dl class="ent"><div class="row" data-f><dt>Build</dt><dd>Tap an empty tile, pick a tower, and tap again to build. Towers near a bend in the road keep enemies in range longer.</dd></div>
+<div class="row" data-f><dt>Next</dt><dd>Tap Next to start the wave. The next wave waits for a clear field, up to a cap. Calling a wave early pays for each enemy still alive.</dd></div>
+<div class="row" data-f><dt>Credits</dt><dd>Kills pay credits. Spend them on towers, upgrades, the core and the probe.</dd></div>
+<div class="row" data-f><dt>Power</dt><dd>Every tower draws 1 power. Your grid holds 8, plus 1 every 3 waves. When the grid is full, upgrade the towers you have.</dd></div>
+<div class="row" data-f><dt>Bosses</dt><dd>A boss arrives every 10 waves. If a boss reaches the core, the run ends.</dd></div>
+<div class="row" data-f><dt>Threat Board</dt><dd>The Threat chip in the top bar shows the next wave, what beats it, the coming Strain Assault and what the swarm is breeding. Tap any enemy to see what it is and what beats it.</dd></div>
+<div class="row" data-f><dt>Extract or Push</dt><dd>Kill the Most Wanted boss to claim its bounty. Then Extract to end the run as a win, or Push on for more score.</dd></div>
+<div class="row" data-f><dt>Saved runs</dt><dd>The game saves when you close it. A saved run resumes at the start of the wave you left. A Daily Hunt resumes at the exact moment.</dd></div></dl></section>
+<section id="core"><h2>The Core</h2>
+<p data-f>The core holds the Last Gradient. The core is your base, your biggest gun, and the one thing you cannot lose.</p>
+<dl class="ent"><div class="row" data-f><dt>Lift Off</dt><dd>The core flies to any open tile in the sector, or onto an attack tower. Every road re-routes to the landing spot, and enemies already walking turn toward it. In the air the gun is offline and the shield is down. Lift Off takes 3 waves to recharge after a landing. The Uplink shortens that.</dd></div>
+<div class="row" data-f><dt>Docking</dt><dd>Land on an attack tower and the core docks it as a second gun: its element, affixes, spec, perks and Technique, at ×2 Damage and +1 Range. The core's own gun keeps firing. Support towers cannot be docked.</dd></div>
+<div class="row" data-f><dt>Core Link</dt><dd>The landed core links its 3 nearest attack towers within 4 tiles: +10% Damage and attack rate for each tower, and +5% Damage for the core per link.</dd></div>
+<div class="row" data-f><dt>Move</dt><dd>Any tower can Move from its panel for a small fee and keep its upgrades. Moves are free at a checkpoint.</dd></div>
+<div class="row" data-f><dt>Battery</dt><dd>The core's gun. 12 levels. At level 4, Twin Battery: Fires a second shell at the next target. At level 8, Siege Shells: +0.6 blast radius, +25% damage to elites and bosses. At level 12, Orbital Uplink: Every 5th volley calls a strike on the toughest enemy in range.</dd></div>
+<div class="row" data-f><dt>Shield</dt><dd>Absorbs leak damage before the hull, and recharges when left alone.</dd></div>
+<div class="row" data-f><dt>Hull</dt><dd>10 levels. Each level adds 12% max hull and takes 5% off leak damage. A late-run place to spend credits.</dd></div>
+<div class="row" data-f><dt>Uplink</dt><dd>9 levels. Each level cuts ability cooldowns by 5%. At level 3, Double Tap: Orbital Strike hits the same spot twice. At level 6, Undertow: Enemies leave Stasis slowed 40% for 4s. At level 9, Nova Echo: Entropy Nova pulses again 1.5s later at half strength.</dd></div>
+<div class="row" data-f><dt>Core light</dt><dd>The core's light reveals cloaked enemies near it. The light dims as the core loses health. Each Supernova widens it by 1 tile, up to 5.</dd></div>
+<div class="row" data-f><dt>Red Alert</dt><dd>A boss within 8 tiles of the core. The field turns red and the core goes to Last Stand: its shells deal ×2.5 to that boss, and it fires ×1.6 as fast.</dd></div>
+<div class="row" data-f><dt>Fog of war</dt><dd>Ground you have not seen is dark. The core, your towers and the probe light it up.</dd></div></dl></section>
+<section id="power"><h2>Power and Placement</h2>
+<dl class="ent"><div class="row" data-f><dt>Power grid</dt><dd>Every tower draws 1 power. Capacity is 8 plus 1 every 3 waves. The reactor adds more for credits.</dd></div>
+<div class="row" data-f><dt>Overcharge</dt><dd>Spend spare power on one tower: +35% Damage and +15% Attack Speed per point, up to 3. Free to change at any time.</dd></div>
+<div class="row" data-f><dt>Power Node</dt><dd>A glowing cyan diamond. A tower on a Power Node draws no power and gets +25% Damage and +15% Range. The core on a Node gets +50% Damage and +20% attack rate. Roads never pave over a Node.</dd></div>
+<div class="row" data-f><dt>Node Link</dt><dd>Attack towers on Power Nodes within 9 tiles of each other link up. Each gets +10% Damage, and the beam between them burns anything that crosses it.</dd></div>
+<div class="row" data-f><dt>Resonance</dt><dd>Towers of different elements side by side: +8% Damage per element.</dd></div>
+<div class="row" data-f><dt>No-Build Zone</dt><dd>Nothing can be built within 4 tiles of a wormhole.</dd></div>
+<div class="row" data-f><dt>Ground-only</dt><dd>The Flame Projector, Gravity Well, Buzzsaw and Rimewall cannot hit fliers.</dd></div>
+<div class="row" data-f><dt>IDLE</dt><dd>A tag on a tower that has not fired for three waves. Move it to where the enemies are.</dd></div></dl></section>
+<section id="elements"><h2>Elements, Statuses and Combos</h2>
+<p data-f>Every attack tower has an element. Enemies resist some elements and are weak to others, and elements combine.</p>
+<h3>Elements</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#efe6cf">Kinetic</dt><dd>Bullets, rails and blades. Crits and armor piercing.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Thermal</dt><dd>Fire. Applies Burn.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Cryo</dt><dd>Cold. Applies Chill, then Freeze.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Arc</dt><dd>Lightning. Chains between enemies and applies Shock. Tears shields.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Void</dt><dd>Beams and gravity. Applies Mark.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Neutral</dt><dd>Support towers: they boost, pay or protect.</dd></div></dl>
+<h3>Statuses</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff7b39">Burn</dt><dd>Deals damage over time. Stops healing.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Chill</dt><dd>Slows. Stacks up to 5.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Freeze</dt><dd>At 5 Chill stacks the enemy is frozen in place.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Shock</dt><dd>The enemy takes +15% damage while Shocked.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Mark</dt><dd>Each stack adds +5% damage taken.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Stun</dt><dd>The enemy cannot move.</dd></div>
+<div class="row" data-f><dt>Cloaked</dt><dd>Cannot be targeted. Relay Pylons, the core's light and Sensor Sweep reveal cloaked enemies.</dd></div>
+<div class="row" data-f><dt>Plating</dt><dd>Blunts every hit except piercing fire: the Rail Lance, Void Lens beams, Burn and other damage over time, and abilities.</dd></div>
+<div class="row" data-f><dt>Shield</dt><dd>Absorbs damage before HP. Arc tears shields at 3×.</dd></div></dl>
+<h3>Combos</h3>
+<dl class="ent"><div class="row" data-f><dt>Shatter</dt><dd>Kinetic hit on a Frozen enemy deals burst damage.</dd></div>
+<div class="row" data-f><dt>Discharge</dt><dd>Voltaic: Arc hits charge an enemy, then release a share of its max HP.</dd></div>
+<div class="row" data-f><dt>Thaw Crack</dt><dd>Cryogenics: when a Freeze ends, the ice cracks for a share of max HP.</dd></div>
+<div class="row" data-f><dt>Thermal Shock</dt><dd>Thermal hit on a heavily Chilled enemy shatters the frost.</dd></div>
+<div class="row" data-f><dt>Overload</dt><dd>Thermal on Shocked or Arc on Burning causes an explosion.</dd></div>
+<div class="row" data-f><dt>Superconduct</dt><dd>Arc hit on a Chilled enemy spreads Shock nearby.</dd></div>
+<div class="row" data-f><dt>Collapse</dt><dd>Void hit at max Marks implodes the target.</dd></div></dl>
+<h3>Terms</h3>
+<dl class="ent"><div class="row" data-f><dt>Pierce</dt><dd>Hits pass through additional enemies.</dd></div>
+<div class="row" data-f><dt>Chain</dt><dd>Attacks jump to additional nearby enemies.</dd></div>
+<div class="row" data-f><dt>Splash</dt><dd>Damages enemies around the impact. Radius in tiles.</dd></div>
+<div class="row" data-f><dt>Crit</dt><dd>A critical hit. Deals bonus Crit Damage.</dd></div>
+<div class="row" data-f><dt>Ramp</dt><dd>Beam damage that grows while the beam holds one target.</dd></div></dl></section>
+<section id="towers"><h2>Towers</h2>
+<p data-f>There are 20 towers: 13 you unlock by reaching waves, and 7 that sit at the top of a Talent tree. Every element has two base towers.</p>
+<h3>How towers grow</h3>
+<dl class="ent"><div class="row" data-f><dt>Upgrade</dt><dd>Levels 1 to 5. Each level raises damage (×1, ×1.65, ×2.6, ×4.1, ×6.4) and rolls a random bonus, an affix.</dd></div>
+<div class="row" data-f><dt>Specialization</dt><dd>At LV 3 you pick one of two specs. The choice is permanent.</dd></div>
+<div class="row" data-f><dt>Ascend</dt><dd>Past LV 5 a tower Ascends: ×1.15 Damage (Void Lens ×1.08), a new affix and a perk you choose from 3.</dd></div>
+<div class="row" data-f><dt>Tier names</dt><dd>A tower's total level sets its tier color: Common (to 3), Uncommon (to 6), Rare (to 9), Epic (to 12), Legendary (to 15), Mythic (above 15).</dd></div>
+<div class="row" data-f><dt>Veteran</dt><dd>Towers that fight earn Veteran ranks, and a name of their own. Each rank offers a mutation: an affix you choose.</dd></div>
+<div class="row" data-f><dt>Technique</dt><dd>A second fire mode for one tower type, learned with a one-point talent. Switch it per tower from the tower panel. A Technique is a different job, not an upgrade.</dd></div>
+<div class="row" data-f><dt>Mastery</dt><dd>Every tower type ranks up across runs from its share of the damage. Ranks 1 to 5: Mastery badge on the build card; +5% Damage (support towers: +5% strength); Gold trim on the tower; Ascend offers 4 perks instead of 3; Its own legendary affix can roll.</dd></div>
+<div class="row" data-f><dt>Sell</dt><dd>A sold tower refunds 70% of what you put in. Selling is free before a Strain Assault lands, and refunds 100% at a checkpoint.</dd></div></dl>
+<h3>Base towers</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#efe6cf">Pulse Blaster<small>Kinetic · 60 credits · unlocks at Wave 1</small></dt><dd>Fires fast at one target.<ul><li><b>Spec, Gatling Array:</b> ×2.2 Attack Speed, ×0.85 Damage.</li><li><b>Spec, Twin Cannons:</b> Fires at 2 targets. ×1.25 Damage.</li><li><b>Technique, Suppressor:</b> Rounds slow what they hit by 35% for 1.5s. ×0.75 Damage.</li><li><b>Ascend perks:</b> Burst Fire (Every 5th shot: 3 rounds), AP Rounds (Ignores Plating), Ricochet Rounds (+2 bounces per round), Hollow Point (+40% Damage below half HP), Rapid Cycle (+46% Attack Speed), Hair Trigger (+14% Crit Chance), Spin-Up (Speeds up while firing, to +40%), Third Barrel (+1 target).</li><li><b>Its own Legendary, Storm of Lead:</b> Rounds bounce to 2 more enemies. +15% Attack Speed.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Rail Lance<small>Kinetic · 110 credits · unlocks at Wave 1</small></dt><dd>Fires long-range shots that pierce through enemies.<ul><li><b>Spec, Gauss Spire:</b> ×1.8 Damage, +15% Crit Chance.</li><li><b>Spec, Splinter Rail:</b> +4 Pierce, ×1.5 Damage.</li><li><b>Technique, Charged Shot:</b> Every 3rd shot deals ×4 and pierces every enemy in line. ×0.5 Attack Speed.</li><li><b>Ascend perks:</b> Long Bore (+3 Pierce), Overpressure (+46% Damage), Spotter (Crits Mark every enemy hit (2 stacks)), Deflection (Ricochets once for 60%), Capacitor Bank (Every 3rd shot: ×2.5 Damage), Coup de Grace (Executes non-bosses under 15%), Big Game (+40% Damage to Bosses and Elites), Long Barrel (+1.3 Range), Tungsten Slug (+50% Crit Damage), Live Wire (Shocks every enemy hit).</li><li><b>Its own Legendary, Railstorm:</b> Shots ricochet once for 60% Damage. +2 Pierce.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Cryo Emitter<small>Cryo · 75 credits · unlocks at Wave 1</small></dt><dd>Sends out a pulse that Chills nearby enemies.<ul><li><b>Spec, Glacier Core:</b> ×1.5 Chill strength. Freeze lasts 0.6s longer.</li><li><b>Spec, Shatter Field:</b> Chilled enemies in range take +60% Kinetic Damage.</li><li><b>Technique, Cold Lance:</b> A freezing beam on one target instead of a pulse: ×3 Damage to it, pierces Plating, +0.8 Range.</li><li><b>Ascend perks:</b> Ice Burst (Frozen kills burst (8% HP)), Brittle (Enemies it Freezes take +25% Damage), Deep Freeze (Freeze lasts +0.7 s), Flash Chill (+1 Chill per pulse), Wide Ring (+0.8 Range), Compressor (+32% pulse rate), Permafrost (Refreeze 40% sooner), Fault Lines (+30% Shatter Field).</li><li><b>Its own Legendary, Absolute Ring:</b> Frozen enemies take +20% Damage. Each pulse adds 1 more Chill stack.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Snare Beacon<small>Support · 75 credits · unlocks at Wave 4</small></dt><dd>Lures fliers off course into a slowing net. Netted fliers take +20% damage.<ul><li><b>Spec, Tangle Web:</b> Caught fliers are held 2s. Net slows 70%.</li><li><b>Spec, Long Lure:</b> +2 lure range, +6 catches per wave.</li><li><b>Ascend perks:</b> Bigger Net (+9 catches per wave), Barbs (Hold +0.8 s), Tar (+15% net slow), Exposed (Netted take +25% Damage).</li><li><b>Its own Legendary, Kraken Net:</b> +8 catches per wave. Netted fliers take +20% more damage.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Swarm Missile<small>Thermal · 120 credits · unlocks at Wave 5</small></dt><dd>Fires homing missiles that deal splash damage and apply Burn.<ul><li><b>Spec, Cluster Pods:</b> Missiles split into 3 bomblets.</li><li><b>Spec, Napalm Payload:</b> Impacts leave burning ground.</li><li><b>Technique, Bunker Buster:</b> One heavy warhead: ×2 Damage, ignores Plating and half of Armor. No splash, bomblets or napalm.</li><li><b>Ascend perks:</b> Extra Tube (+2 half-power missiles), Penetrator (Ignores Plating), Smart Seekers (Missiles retarget), Heavy Warhead (+0.7 Splash), Shrapnel (Blasts throw 3 shards (25%)), Thermite (+70% Burn damage), Autoloader (+52% fire rate), Bigger Pods (+2 bomblets), Sticky Gel (Fire pools +2 s, 30% wider).</li><li><b>Its own Legendary, Hydra:</b> +2 half-power missiles. Missiles find a new target if theirs dies.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Relay Pylon<small>Support · 100 credits · unlocks at Wave 8</small></dt><dd>Boosts nearby towers and reveals cloaked enemies.<ul><li><b>Spec, Amplifier:</b> +20% Damage boost.</li><li><b>Spec, Uplink:</b> +1 Range. Also boosts Crit Chance by 12%.</li><li><b>Ascend perks:</b> Amplifier Coil (+10% Damage boost), Relay Mast (+1 Range), Targeting Grid (+14% Crit boost), Clock Sync (+8% Speed boost).</li><li><b>Its own Legendary, Overmind:</b> +10% Damage boost. +1 Range.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Arc Coil<small>Arc · 100 credits · unlocks at Wave 10</small></dt><dd>Fires chain lightning that applies Shock.<ul><li><b>Spec, Tesla Crown:</b> +3 Chain, ×1.35 Damage.</li><li><b>Spec, Overvolt:</b> ×1.7 Damage, ×2 Shock effect, 12% chance to Stun.</li><li><b>Technique, Arc Fence:</b> Stops chaining. Arcs a fence to the nearest Coil within 4 tiles that zaps and Shocks everything within a tile of it.</li><li><b>Ascend perks:</b> Extra Coil (+3 Chain), Amperage (+46% Damage), Arc Weld (Ignores Plating), Feedback Loop (Last arc hits the first again), Superconductor (No damage lost per jump), Long Arc (Arcs reach 65% farther), Overcurrent (+32% Damage to Shocked), Taser (+14% Stun chance), Crown Jewel (+2 Chain), High Voltage (+30% Damage).</li><li><b>Its own Legendary, Storm Crown:</b> +2 Chain. The last arc jumps back to the first target.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Credit Forge<small>Support · 150 credits · unlocks at Wave 12</small></dt><dd>Produces credits each wave.<ul><li><b>Spec, Refinery:</b> ×2.2 Income.</li><li><b>Spec, Bounty Net:</b> +30% kill credits within 3 tiles.</li><li><b>Ascend perks:</b> Overtime (+45% income), Finder's Fee (+7% kill credits), Compound (0.5% interest per wave), Hazard Pay (Boss waves pay double).</li><li><b>Its own Legendary, Golden Goose:</b> +50% income. Earns 0.5% interest on banked credits each wave.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Flame Projector<small>Thermal · 90 credits · unlocks at Wave 15</small></dt><dd>Sprays a short-range cone of fire that applies Burn.<ul><li><b>Spec, Inferno:</b> ×2 Burn damage.</li><li><b>Spec, Plasma Torch:</b> +0.5 Range. Also applies Shock.</li><li><b>Technique, Backdraft:</b> Burns a full ring around the tower instead of a cone. ×0.7 Range.</li><li><b>Ascend perks:</b> Spreading Fire (Burn spreads on death), Wide Nozzle (Cone 50% wider), Pressure Tank (+0.7 Range), Accelerant (+56% Damage), Slag (Ignores Plating), Updraft (Hits fliers), Slow Burn (Burn lasts +2 s), Ion Torch (+25% Shock chance).</li><li><b>Its own Legendary, Dragon's Breath:</b> Flames reach fliers. Burn spreads on death. +30% Damage.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Squall Array<small>Cryo · 130 credits · unlocks at Wave 18</small></dt><dd>Casts a blizzard on the biggest pack in range. Enemies inside take cold damage and Chill.<ul><li><b>Spec, Whiteout:</b> +0.8 blizzard radius. Cloaked enemies inside are revealed.</li><li><b>Spec, Hailstorm:</b> ×2 Damage. The blizzard lasts 1s less.</li><li><b>Ascend perks:</b> Wide Front (+0.5 blizzard radius), Slow Front (Blizzards last +1 s), Fast Cycle (+27% cast rate), High Mast (+1 Range), Frostbite (+20% Damage), Deep Freeze (Freeze lasts +0.7 s), Clear Eye (Revealed enemies stay revealed 2 s after they leave), Heavy Hail (+25% Damage to Frozen enemies).</li><li><b>Its own Legendary, Long Winter:</b> Blizzards last 2 s longer and reach 0.4 tiles wider.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Void Lens<small>Void · 150 credits · unlocks at Wave 20</small></dt><dd>Fires a beam that deals more damage the longer it stays on one target. Applies Mark.<ul><li><b>Spec, Event Horizon:</b> Ramps up to ×3.3 damage.</li><li><b>Spec, Prism Split:</b> Splits into 3 beams. Ramps up to ×2.</li><li><b>Technique, Null Tether:</b> No ramp: steady damage at the base rate. Beamed enemies are 35% slower and Marked twice as fast.</li><li><b>Ascend perks:</b> Fork (Forks to a 2nd target (30%)), Persistence (Keeps half its ramp on retarget), Focal Length (+1.6 Range), Quick Focus (Ramps 65% faster), Brand (+9% Mark chance), Afterglow (Its Marks last +3 s), Deep Well (+0.3 max ramp), Fourth Facet (+1 beam).</li><li><b>Its own Legendary, Twin Singularity:</b> Beam forks to a 2nd target for 50% Damage. Keeps half its ramp when switching target.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">EMP Mortar<small>Arc · 130 credits · unlocks at Wave 25</small></dt><dd>Lobs shells that Stun enemies in an area.<ul><li><b>Spec, Blackout Shell:</b> 1.2s Stun, +0.3 Splash, ×1.4 Damage.</li><li><b>Spec, Ion Barrage:</b> Fires 3 shells per volley.</li><li><b>Technique, Pulse Mines:</b> Shells stay on the road as mines (up to 4) that explode when a ground enemy steps on them. ×1.75 Damage. Fliers never set them off.</li><li><b>Ascend perks:</b> Long Pulse (Stun lasts +0.5 s), Scatter Shell (Shells split in 3 (20%)), Wide Burst (+0.7 Splash), Shaped Charge (Ignores Plating), Shield Eater (Strips shields fully), Fast Breech (+52% fire rate), Ion Charge (Hits Shock), Lights Out (Bosses are Stunned twice as long), Fourth Shell (+1 shell per volley).</li><li><b>Its own Legendary, Cascade:</b> Shells split into 3 bomblets. Stun lasts 0.3 s longer.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Gravity Well<small>Void · 140 credits · unlocks at Wave 30</small></dt><dd>Pulls enemies back along the path.<ul><li><b>Spec, Singularity:</b> ×3 Damage. Pulses apply Mark.</li><li><b>Spec, Tidal Lock:</b> ×2 pull distance.</li><li><b>Technique, Repulsor:</b> Also hits fliers and throws them back along their flight. ×0.6 pull on the ground, ×0.5 Damage.</li><li><b>Ascend perks:</b> Undertow (Pulled enemies 30% slower), Sky Anchor (Pulls fliers too), Heavy Core (+40% pull), Crush Depth (+40% Damage), Event Radius (+0.7 Range), Steady Pull (Repeat pulls stay stronger), Dark Mark (+1 Mark per pulse), Eddy (Pulled enemies are Chilled).</li><li><b>Its own Legendary, Abyss:</b> Wells drag fliers. Pulled enemies are slowed 30%.</li></ul></dd></div></dl>
+<h3>Tier towers</h3>
+<p data-f>Spend 16 points in a Talent tree to unlock its tier tower.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#efe6cf">Buzzsaw<small>Kinetic · 140 credits · Ballistics tier tower</small></dt><dd>Throws a blade onto the road. It runs back up the road and cuts every ground enemy once. Ignores Plating.<ul><li><b>Spec, Grinder:</b> Blades run 40% slower and 40% wider. ×1.4 Damage.</li><li><b>Spec, Twin Saw:</b> Throws 2 blades at 2 targets. ×1.1 Damage.</li><li><b>Ascend perks:</b> Sharper Teeth (+46% Damage), Long Run (Blades run +2.5 tiles), Boomerang (Blades run back once), Serrated (+14% Crit Chance), Wide Blade (Blades 50% wider), Overspin (+37% throw rate), Grind (Blades stop 1 s at the end of their run), Third Blade (+1 blade).</li><li><b>Its own Legendary, Sawmill:</b> Blades run back once. Blades run +2 tiles.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Flashover<small>Thermal · 130 credits · Combustion tier tower</small></dt><dd>Pulses fire. Burning enemies in range explode for their remaining Burn. The rest catch fire.<ul><li><b>Spec, Chain Reaction:</b> Explosions set enemies within 1.5 tiles on fire.</li><li><b>Spec, Furnace:</b> ×1.8 explosion damage. +0.5 Range.</li><li><b>Ascend perks:</b> Short Fuse (+46% Damage), Volatile (+70% explosion damage), Blast Radius (+0.7 explosion radius), Heat Haze (+0.7 Range), Smoulder (Burn stays after an explosion, at half strength), Bellows (+37% pulse rate), Firestorm (+0.5 spread radius), Crucible (+30% explosion damage).</li><li><b>Its own Legendary, Napalm Heart:</b> Burn stays after an explosion, at half strength. +0.5 explosion radius.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Surge Spire<small>Arc · 130 credits · Voltaic tier tower</small></dt><dd>Chain lightning. Stores charge while idle and from its kills, then fires 4× as fast until the charge is gone.<ul><li><b>Spec, Deep Cell:</b> Stores 20 charges. ×1.2 Damage.</li><li><b>Spec, Forked Surge:</b> +2 Chain. ×1.25 Damage.</li><li><b>Ascend perks:</b> Amperage (+46% Damage), Spare Cells (Stores +7 charges), Fast Charge (Charges 65% faster), Extra Arc (+2 Chain), Superconductor (No damage lost per jump), Taser (+14% Stun chance), Overcurrent (+32% Damage to Shocked), Reserve Cell (+10 charges), Fork Storm (+2 Chain).</li><li><b>Its own Legendary, Thunderhead:</b> Stores +8 charges. +1 Chain.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Rimewall<small>Cryo · 140 credits · Cryogenics tier tower</small></dt><dd>Raises an ice wall on the road. Ground enemies stop at it and Chill until it breaks.<ul><li><b>Spec, Pack Ice:</b> ×2 wall strength. Regrows 25% faster.</li><li><b>Spec, Rime Spikes:</b> ×3 Damage to held enemies. They take +25% Kinetic Damage.</li><li><b>Ascend perks:</b> Thick Ice (+60% wall strength), Quick Freeze (Regrows 37% faster), Frostbite (+55% Damage), Ice Shards (A broken wall hits enemies within 1.5 tiles for ×4 Damage), Long Reach (+0.8 Range), Brittle (Enemies it Freezes take +25% Damage), Glacier Pack (+50% wall strength), Ice Barbs (Held enemies take +15% more Kinetic Damage).</li><li><b>Its own Legendary, Glacier Heart:</b> +60% wall strength. A broken wall hits enemies within 1.5 tiles for ×4 Damage.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Entangler<small>Void · 140 credits · Singularity tier tower</small></dt><dd>Links 3 enemies. 30% of each hit one of them takes is shared out to the others.<ul><li><b>Spec, Wide Web:</b> Links 5 enemies. Shares 35%.</li><li><b>Spec, Shared Fate:</b> Shares 45%. Linked enemies are 20% slower.</li><li><b>Ascend perks:</b> Extra Strand (+2 links), Resonant Link (Shares +8%), Long Link (Links last +3 s), Null Weight (+46% Damage), Far Reach (+0.8 Range), Dark Bond (Linked enemies gain 1 Mark per second), Spider Web (+1 link), Doom Bond (Shares +6%).</li><li><b>Its own Legendary, Cat's Cradle:</b> +2 links. Shares +8%.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Gatekeeper<small>Support · 150 credits · Bastion tier tower</small></dt><dd>Guards the core. Stops 2 leaks per wave while the core is in range. Shoots enemies that come close.<ul><li><b>Spec, Bulkhead:</b> +2 leaks stopped per wave.</li><li><b>Spec, Interceptor:</b> ×2.5 Damage. +1 Range.</li><li><b>Ascend perks:</b> Extra Guard (+2 leaks stopped per wave), Point Defense (+37% Damage), Wide Watch (+1 Range), Salvage Rights (Stopped leaks pay double credits), Patch Job (Each stop repairs 3% core HP), Quick Sights (+27% Attack Speed), Last Wall (+1 leak stopped per wave), Flak Rounds (Shots burst for 50% Damage within 0.8 tiles).</li><li><b>Its own Legendary, Last Line:</b> +2 leaks stopped per wave. Stopped leaks pay double credits.</li></ul></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Wildcard<small>Support · 120 credits · Command tier tower</small></dt><dd>Every shot rolls a random element and attack. Every 10th shot is a Jackpot.<ul><li><b>Spec, Loaded Dice:</b> Its rolled status always lands. ×1.2 Damage.</li><li><b>Spec, High Roller:</b> A Jackpot every 5th shot.</li><li><b>Ascend perks:</b> Lucky Streak (+25% status chance), House Edge (+46% Damage), Hot Table (Jackpot 3 shots sooner), Double Down (18% chance to fire twice), Long Odds (+0.8 Range), Fast Deal (+37% Attack Speed), Marked Cards (+25% Damage), All In (Jackpots deal ×3 instead of ×2).</li><li><b>Its own Legendary, Royal Flush:</b> Jackpot 4 shots sooner. 15% chance to fire twice.</li></ul></dd></div></dl></section>
+<section id="affixes"><h2>Affixes, Legendaries and Curses</h2>
+<p data-f>An affix is a bonus a tower rolls when you upgrade it. The core rolls affixes too. Recalibration tokens reroll them.</p>
+<h3>Rarity</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#c9c6bc">Common</dt><dd>Base value.</dd></div>
+<div class="row" data-f><dt style="color:#5ea9ff">Magic</dt><dd>×1.7 value.</dd></div>
+<div class="row" data-f><dt style="color:#ffd84a">Rare</dt><dd>×2.6 value.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Legendary</dt><dd>A unique effect.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Curse</dt><dd>A negative affix, from cursed loot.</dd></div></dl>
+<h3>Affixes</h3>
+<dl class="ent"><div class="row" data-f><dt>+10–15% Damage</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+8–12% Attack Speed</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+6–10% Range</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+4–6% Crit Chance</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+20–30% Crit Damage</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>15–20% chance to Burn</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>15–20% chance to Chill</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>15–20% chance to Shock</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>15–20% chance to Mark</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+10–15% kill credits</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+15–25% Damage to Elites and Bosses</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+20–30% Damage to slowed enemies</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+1–2 Pierce</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+1–2 Chain</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+0.3–0.4 Splash radius</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>Executes enemies below 5–8% HP (not Bosses)</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+1 target</dt><dd>Common range. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt>+8–12% Boost strength</dt><dd>Common range. Relay Pylon.</dd></div>
+<div class="row" data-f><dt>+10–15% Range</dt><dd>Common range. Relay Pylon.</dd></div>
+<div class="row" data-f><dt>+15–25% Income</dt><dd>Common range. Credit Forge.</dd></div>
+<div class="row" data-f><dt>+5–10% credits from all kills</dt><dd>Common range. Credit Forge.</dd></div>
+<div class="row" data-f><dt>+6–10% Core max HP</dt><dd>Common range. Core.</dd></div>
+<div class="row" data-f><dt>+10–15% Shield</dt><dd>Common range. Core.</dd></div>
+<div class="row" data-f><dt>+15–25% Shield recharge speed</dt><dd>Common range. Core.</dd></div>
+<div class="row" data-f><dt>Repairs 2–3% hull at the start of each wave</dt><dd>Common range. Core.</dd></div>
+<div class="row" data-f><dt>−5–8% damage from leaks</dt><dd>Common range. Core.</dd></div></dl>
+<h3>Legendaries</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff8a2a">Detonator</dt><dd>Kills explode for 40% of the enemy's max HP. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Ricochet Matrix</dt><dd>Hits bounce to 3 more enemies for 60% damage. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Overclock Loop</dt><dd>Every 8s: +150% Attack Speed for 3s. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Prism Core</dt><dd>Hits apply a random status. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Echo Chamber</dt><dd>30% chance to attack twice. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Siphon</dt><dd>Kills restore 0.5% core HP. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Entropic Rounds</dt><dd>Hits deal a random ×0.4 to ×3 damage. Attack towers and the core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Nexus</dt><dd>×1.5 Boost strength, +1 Range. Relay Pylon.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Midas Press</dt><dd>×2 Income. Earns 1% interest on banked credits. Credit Forge.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Bulwark Matrix</dt><dd>Shield fully recharges at the start of each wave. Core.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a2a">Retribution</dt><dd>When an enemy reaches the core, it blasts everything within 2.5 tiles for 4× core damage. Core.</dd></div></dl>
+<p data-f>Every tower type also has its own Legendary. A tower type can roll it once its Mastery reaches rank 5. Each one is listed with its tower above.</p>
+<h3>Curses</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff4d6a">−15% Damage</dt><dd>Curse.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">−15% Attack Speed</dt><dd>Curse.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">−15% Range</dt><dd>Curse.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">5% chance to jam for 1s</dt><dd>Curse.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">10% of attacks misfire</dt><dd>Curse.</dd></div></dl></section>
+<section id="abilities"><h2>Abilities</h2>
+<p data-f>Five abilities sit on the left rail, each on its own cooldown. Crates, bosses, milestones and storms add extra charges that stack. Only the last charge you spend recharges: hold 5 and fire 1, and you come back to 5.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ffb03a">Orbital Strike<small>45 s cooldown · from Wave 1</small></dt><dd>Tap a target to deal heavy area damage.</dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Entropy Nova<small>210 s cooldown · from Wave 12</small></dt><dd>All enemies lose 35% HP (Bosses 10%).</dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Stasis Field<small>110 s cooldown · from Wave 4</small></dt><dd>Freezes all enemies for 4s.</dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Frenzy<small>90 s cooldown · from Wave 9</small></dt><dd>+100% Attack Speed for 8s.</dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Sensor Sweep<small>30 s cooldown · from Wave 7</small></dt><dd>Reveals cloaked enemies for 8s, Marks everything it sweeps (+15% damage taken) and flags the largest threat.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Nuke</dt><dd>Once per run, from Wave 35. Tap Nuke, then tap again to confirm. Every enemy on the map that is not a boss is erased, with kill credits and score. Bosses survive and lose 20% of their remaining HP.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Gravity Bomb</dt><dd>A Strike aimed inside a Black Hole. The bomb drags enemies in and feeds the hole.</dd></div>
+<div class="row" data-f><dt>Storm harvest</dt><dd>Fly the probe into a storm to harvest one charge: Ion Storm gives Strike, Cryo Front gives Stasis, Void Tide gives Nova, Solar Flare gives Frenzy, Static Haze gives Scan.</dd></div></dl></section>
+<section id="talents"><h2>Talents</h2>
+<p data-f>Runs pay XP, and each level is a Talent point. There are seven trees. Talents are permanent between runs, and you can respec for free between runs and at checkpoints. Mid-run changes cost Recalibration tokens.</p>
+<dl class="ent"><div class="row" data-f><dt>Rows</dt><dd>Each row of a tree opens after 3 points in that tree.</dd></div>
+<div class="row" data-f><dt>Signature</dt><dd>Every point in a tree raises its Signature, an effect only that tree has. Deeper points count more. The numbers below are at 12 points.</dd></div>
+<div class="row" data-f><dt>Fusion</dt><dd>8 points in each of two trees opens their Fusion. One Fusion is active in a run.</dd></div>
+<div class="row" data-f><dt>Capstone</dt><dd>12 points in a tree opens its three Capstones. A Capstone changes how a run plays, often with a cost. You hold 1 Capstone, 2 from Level 25 and 3 from Level 60.</dd></div>
+<div class="row" data-f><dt>Tier tower</dt><dd>16 points in a tree unlocks its tier tower.</dd></div>
+<div class="row" data-f><dt>Builds</dt><dd>Save up to five Talent layouts and load one between runs.</dd></div></dl>
+<h3 id="tree-K">Ballistics</h3>
+<p data-f><b style="color:#efe6cf">Kinetic guns: crits that tear through armor.</b> Signature, <b>Killshot:</b> Kinetic crits deal an extra 0.45% of the enemy's max HP. Bosses take a quarter of that.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#efe6cf">Heavy Rounds<small>at 3 ranks</small></dt><dd>+30% Kinetic Damage. <em>Last rank, Stagger: Kinetic crits knock small ground enemies back a step (once every 2 s each).</em></dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Precision<small>at 3 ranks</small></dt><dd>+12% Crit Chance.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Suppressor<small>Technique · 1 point</small></dt><dd>Technique for the Pulse Blaster: Suppressor. Rounds slow what they hit by 35% for 1.5s. ×0.75 Damage.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Autoloader<small>at 3 ranks</small></dt><dd>+18% Kinetic Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Penetrator<small>at 2 ranks</small></dt><dd>Ignores 24% of Armor.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Charged Shot<small>Technique · 1 point</small></dt><dd>Technique for the Rail Lance: Charged Shot. Every 3rd shot deals ×4 and pierces every enemy in line. ×0.5 Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Hollow Points<small>1 rank</small></dt><dd>Kinetic crits deal 40% of their damage to enemies within 1 tile. +15% Crit Damage.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Lethality<small>at 2 ranks</small></dt><dd>+28% Crit Damage.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Rifling<small>1 rank</small></dt><dd>Every 5th Kinetic attack is a guaranteed crit. +8% Kinetic Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Armor Shredder<small>at 2 ranks</small></dt><dd>Kinetic hits make Elites and Bosses take +2.4% damage, stacking to +30%. +10% Damage to Elites and Bosses.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#efe6cf">Capstone: Marksman</dt><dd>Your power grid is 40% smaller. Every attack tower is Overcharged +2 for free, and Overcharge goes up to 5 steps. Towers show targeting lasers.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Capstone: Sniper Nest</dt><dd>Rail Lances with no tower beside them: +40% Range, +30% Damage, and every shot pierces every enemy in line. Rail Lances with a neighbor deal 25% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Capstone: Ricochet</dt><dd>Pulse Blaster rounds bounce to 3 more enemies, and the first bounce keeps full damage. Rail Lances fire 25% slower.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Tier tower: Buzzsaw</dt><dd>Throws a blade onto the road. It runs back up the road and cuts every ground enemy once. Ignores Plating.</dd></div></dl>
+<h3 id="tree-T">Combustion</h3>
+<p data-f><b style="color:#ff7b39">Thermal and Burn: set the swarm alight.</b> Signature, <b>Consume:</b> Burn deals at least 1.8% of the enemy's max HP per second. Bosses take a quarter of that.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff7b39">Accelerant<small>at 3 ranks</small></dt><dd>+30% Thermal Damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Kindling<small>at 3 ranks</small></dt><dd>+12% chance to Burn.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Backdraft<small>Technique · 1 point</small></dt><dd>Technique for the Flame Projector: Backdraft. Burns a full ring around the tower instead of a cone. ×0.7 Range.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Fuel<small>at 3 ranks</small></dt><dd>+42% Burn damage. <em>Last rank, Cinders: A Burning enemy that dies bursts: a quarter of its Burn left hits enemies within 1 tile and sets them alight.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Blast Radius<small>at 2 ranks</small></dt><dd>+0.2 Splash radius.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Bunker Buster<small>Technique · 1 point</small></dt><dd>Technique for the Swarm Missile: Bunker Buster. One heavy warhead: ×2 Damage, ignores Plating and half of Armor. No splash, bomblets or napalm.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Flashpoint<small>1 rank</small></dt><dd>Burning enemies explode on death for 25% of their max HP. +8% Thermal Damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Scorch<small>at 2 ranks</small></dt><dd>Burning enemies take +16% damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Chain Ignition<small>1 rank</small></dt><dd>Burning enemies spread Burn on death. +20% Burn duration.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Napalm<small>1 rank</small></dt><dd>Thermal kills leave burning ground for 2s. +10% Burn damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Incendiary Rounds<small>1 rank</small></dt><dd>Kinetic hits on Burning enemies always crit.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff7b39">Capstone: Wildfire</dt><dd>Burning ground enemies set the road on fire. Road fire builds Heat during a wave: up to +100% fire damage. Towers within 1 tile of burning road overheat: −25% Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Capstone: Conflagration</dt><dd>All damage becomes Thermal (Resonance unaffected). +50% Thermal Damage, +150% Burn damage. Burning enemies are 25% slower. Every 3rd Thermal hit on a burning enemy triggers Thermal Shock. Chill becomes Burn: cannot Chill or Freeze.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Capstone: Pyre</dt><dd>Every second, Burn spreads to the nearest enemy within 1 tile. Thermal towers: +2% Attack Speed per Burning enemy, up to +40%.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Tier tower: Flashover</dt><dd>Pulses fire. Burning enemies in range explode for their remaining Burn. The rest catch fire.</dd></div></dl>
+<h3 id="tree-A">Voltaic</h3>
+<p data-f><b style="color:#ffe14d">Arc and speed: chains, shocks and overloads.</b> Signature, <b>Arc Leap:</b> When a Shocked enemy dies, lightning hits the nearest enemy within 2.5 tiles for 16.9% of its max HP and Shocks it. Arc hits charge an enemy, Shocked ones twice as fast. At 4 charges it discharges for 1.3% of its max HP, at most once every 1 s. Bosses take a quarter of the discharge.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ffe14d">Voltage<small>at 3 ranks</small></dt><dd>+30% Arc Damage.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Cadence<small>at 3 ranks</small></dt><dd>+12% Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Arc Fence<small>Technique · 1 point</small></dt><dd>Technique for the Arc Coil: Arc Fence. Stops chaining. Arcs a fence to the nearest Coil within 4 tiles that zaps and Shocks everything within a tile of it.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Static<small>at 3 ranks</small></dt><dd>+12% chance to Shock. <em>Last rank, Jumper: A fresh Shock also Shocks the nearest enemy within 1.2 tiles.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Discharge<small>at 2 ranks</small></dt><dd>+10% Arc Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Pulse Mines<small>Technique · 1 point</small></dt><dd>Technique for the EMP Mortar: Pulse Mines. Shells stay on the road as mines (up to 4) that explode when a ground enemy steps on them. ×1.75 Damage. Fliers never set them off.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Forked Lightning<small>1 rank</small></dt><dd>+1 Chain. Chain jumps lose no damage.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Overvolt<small>at 2 ranks</small></dt><dd>+28% Shock effect.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Capacitors<small>1 rank</small></dt><dd>Arc towers charge for 4s; their next attack deals ×3 damage. +10% Arc Damage.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Ion Lattice<small>1 rank</small></dt><dd>Arc towers hit +1 target.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Plasma Coupling<small>1 rank</small></dt><dd>Overload applies Burn to every enemy it hits. +30% Overload radius.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#ffe14d">Capstone: Circuit</dt><dd>Attack towers next to each other are wired: +8% Attack Speed per wired neighbor. A chain of 4+ wired towers fires a lightning bolt every 4s at the toughest enemy in its reach, for 2s of the whole chain's damage. If one tower in a chain is disabled or jammed, the whole chain stalls.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Capstone: Storm Rider</dt><dd>Storms drift toward your Arc towers and linger over them. Arc towers inside a storm: +60% Attack Speed, and Arc Coils chain +2. Storms come 30% more often.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Capstone: Blackout</dt><dd>EMP shells leave a static field for 3s: enemies inside are Shocked and 30% slower. EMP Mortars fire 25% faster. Arc Coils deal 15% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Tier tower: Surge Spire</dt><dd>Chain lightning. Stores charge while idle and from its kills, then fires 4× as fast until the charge is gone.</dd></div></dl>
+<h3 id="tree-C">Cryogenics</h3>
+<p data-f><b style="color:#6ae2ff">Chill and Freeze: slow them, then shatter them.</b> Signature, <b>Deep Cold:</b> Chilled enemies lose 0.9% of their max HP per second for each Chill stack. A Frozen enemy counts as 5 stacks. Bosses take a quarter of that. When a Freeze ends, the ice cracks for 9% of the enemy's max HP, and half that to enemies within 1 tile. Bosses take a quarter.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#6ae2ff">Frostbite<small>at 3 ranks</small></dt><dd>+30% Cryo Damage.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Permafrost<small>at 3 ranks</small></dt><dd>+42% Chill strength.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Cold Lance<small>Technique · 1 point</small></dt><dd>Technique for the Cryo Emitter: Cold Lance. A freezing beam on one target instead of a pulse: ×3 Damage to it, pierces Plating, +0.8 Range.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Frost<small>at 3 ranks</small></dt><dd>+12% chance to Chill.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Stillness<small>at 2 ranks</small></dt><dd>+0.2s Freeze duration. <em>Last rank, Lockdown: Frozen enemies cannot use their abilities: no healing, no drones, no shelling.</em></dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Deep Freeze<small>1 rank</small></dt><dd>Freeze triggers at 4 Chill stacks instead of 5. +0.3s Freeze duration.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Brittle<small>at 2 ranks</small></dt><dd>Frozen enemies take +20% damage.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Frost Lattice<small>1 rank</small></dt><dd>Cryo hits also Chill enemies within 1 tile. +10% Cryo Damage.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Ice Shards<small>1 rank</small></dt><dd>Frozen enemies shatter on death and Chill nearby enemies twice.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Superconductors<small>1 rank</small></dt><dd>Superconduct also Chills. +60% Superconduct radius.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#6ae2ff">Capstone: Glacier</dt><dd>A Frozen ground enemy becomes an ice block: enemies behind it pile up and stop. Bosses and fliers are never blocked. All towers deal 10% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Capstone: Cryo Artillery</dt><dd>Cryo Emitters stop pulsing and lob frost shells at the enemy furthest along, at double range. Each shell bursts for ×2.5 Damage in 1.1 tiles and adds 2 Chill. Cryo Emitters fire 40% slower.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Capstone: Hoarfrost</dt><dd>Every Freeze leaves ice on the road for 5s. Ground enemies on ice are Chilled and take +25% Kinetic Damage. Thermal towers deal 20% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Tier tower: Rimewall</dt><dd>Raises an ice wall on the road. Ground enemies stop at it and Chill until it breaks.</dd></div></dl>
+<h3 id="tree-V">Singularity</h3>
+<p data-f><b style="color:#b86cff">Void and Marks: bend the road, collapse the strong.</b> Signature, <b>Crushing Depth:</b> A Collapse deals 2.7% more of each enemy's max HP.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#b86cff">Null<small>at 3 ranks</small></dt><dd>+24% Void Damage.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Hunter<small>at 3 ranks</small></dt><dd>+18% Damage to Elites and Bosses.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Null Tether<small>Technique · 1 point</small></dt><dd>Technique for the Void Lens: Null Tether. No ramp: steady damage at the base rate. Beamed enemies are 35% slower and Marked twice as fast.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Mark<small>at 3 ranks</small></dt><dd>+12% chance to Mark. <em>Last rank, Hand-off: When a Marked enemy dies, its Marks pass to the nearest enemy within 2 tiles.</em></dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Gravitic<small>at 2 ranks</small></dt><dd>4.8% chance to knock back.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Repulsor<small>Technique · 1 point</small></dt><dd>Technique for the Gravity Well: Repulsor. Also hits fliers and throws them back along their flight. ×0.6 pull on the ground, ×0.5 Damage.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Implosion<small>1 rank</small></dt><dd>+40% Collapse damage. +8% Void Damage.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Event Drag<small>at 2 ranks</small></dt><dd>Enemies at max Marks move 24% slower.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Dark Matter<small>1 rank</small></dt><dd>Each Mark adds +5% Void damage taken. +3 max Mark stacks.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Black Hole<small>1 rank</small></dt><dd>Collapse radius ×2 and pulls enemies back further. +30% Collapse damage.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Gravitic Pull<small>1 rank</small></dt><dd>Knockbacks also apply 2 Marks. 3% chance to knock back.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#b86cff">Capstone: Event Horizon</dt><dd>Every kill opens a small gravity well that drags nearby enemies back down the road. Enemies at max Marks are yanked back 1.5 tiles (once each). Enemies move 12% faster.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Capstone: Gravity Garden</dt><dd>Ground enemies between two Gravity Wells (up to 5 tiles apart) are held: 75% slower and +25% damage taken. Gravity Wells: +25% Range. Void Lenses deal 20% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Capstone: Entropic Decay</dt><dd>Marks never fade. Each Collapse fills the Entropy gauge.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Tier tower: Entangler</dt><dd>Links 3 enemies. 30% of each hit one of them takes is shared out to the others.</dd></div></dl>
+<h3 id="tree-E">Bastion</h3>
+<p data-f><b style="color:#59f0b4">Core, shield and credits: the economy wins long runs.</b> Signature, <b>Stand Fast:</b> Every enemy that reaches the core deals 22.5% less damage to it. Bosses too.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#59f0b4">Hull Plating<small>at 3 ranks</small></dt><dd>+60 core HP.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Salvage<small>at 3 ranks</small></dt><dd>+21% Credits.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Barrier<small>at 2 ranks</small></dt><dd>+24 core shield. +44% Shield recharge speed. <em>Last rank, Rebound: Once a wave, when the core shield breaks it throws enemies within 2 tiles back and stuns them for 0.5 s.</em></dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Supply Lines<small>at 3 ranks</small></dt><dd>−9% tower cost. −15% upgrade cost.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Reinforced Core<small>1 rank</small></dt><dd>Core shield fully recharges at the start of each wave. +30 core HP.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Field Repairs<small>at 2 ranks</small></dt><dd>Waves with no leaks repair 6% core HP.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Compound Interest<small>1 rank</small></dt><dd>Earn 2% interest on banked credits each wave (max 300).</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Retaliation<small>1 rank</small></dt><dd>+60% core Damage. +30% core Attack Speed. +1 core Range.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Salvage Drones<small>1 rank</small></dt><dd>Kills grant +1 credit for every 10 waves reached.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#59f0b4">Capstone: War Economy</dt><dd>The core grows a turret for every stack of banked credits (up to 8): +60% core Damage and +8% core Attack Speed each. The stack size grows with the wave, so keep banking. Towers cost 20% more.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Capstone: Forge Works</dt><dd>Credit Forges arm themselves: each fires Kinetic slugs at enemies within 3 tiles, hitting harder the more it earns. Credit Forge income −35%.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Capstone: Bulwark</dt><dd>When an enemy reaches the core, the core throws back every enemy within 2.5 tiles and Stuns them (every 3s at most). Core +40% max HP. Towers deal 10% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Tier tower: Gatekeeper</dt><dd>Guards the core. Stops 2 leaks per wave while the core is in range. Shoots enemies that come close.</dd></div></dl>
+<h3 id="tree-X">Command</h3>
+<p data-f><b style="color:#ff5fa8">Abilities, veterans, luck and storms.</b> Signature, <b>Battle Rhythm:</b> After you use an ability, all towers gain +5.6% Attack Speed for 5s.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff5fa8">Uplink<small>at 3 ranks</small></dt><dd>+27% ability power.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Telemetry<small>at 3 ranks</small></dt><dd>−18% ability cooldowns. <em>Last rank, Boss Protocol: While a boss is on the field, ability cooldowns recover 50% faster.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Mutation<small>at 2 ranks</small></dt><dd>+30% affix rarity.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Insight<small>at 2 ranks</small></dt><dd>+18% XP.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Optics<small>at 2 ranks</small></dt><dd>+12% Range.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Reserve Cells<small>at 2 ranks</small></dt><dd>+1 charge slot for every ability.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Quartermaster<small>1 rank</small></dt><dd>Ability charges from crates, chests, bosses and milestones come in pairs.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Storm Caller<small>1 rank</small></dt><dd>+50% storm frequency. +50% storm effects.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Lone Wolf<small>1 rank</small></dt><dd>+35% Damage for towers with no neighbors.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Stasis Theory<small>1 rank</small></dt><dd>+3s Stasis duration. Hits on Chilled enemies: 15% chance to Mark.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Field Promotion<small>at 2 ranks</small></dt><dd>Veterans rank up 90% faster.</dd></div></dl>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff5fa8">Capstone: Artisan</dt><dd>Veterans rank up 2× faster and gain +5% Damage per rank. Rerolls cost 50% less. Towers without a Veteran rank deal 25% less damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Capstone: Gambler</dt><dd>Every wave from Wave 2 flips a coin for an extra event: good or bad (always good on boss waves). Score +25%. The Entropy gauge fills 25% faster.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Capstone: Chaos Engine</dt><dd>Every wave, each attack tower takes a random element for that wave (its shots, statuses, talents and Resonance follow it). +25% Damage.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Capstone: Tactician</dt><dd>Using an ability takes 20% off every other ability's cooldown. +15% ability power.</dd></div>
+<div class="row" data-f><dt style="color:#ff5fa8">Tier tower: Wildcard</dt><dd>Every shot rolls a random element and attack. Every 10th shot is a Jackpot.</dd></div></dl></section>
+<section id="fusions"><h2>Fusions</h2>
+<p data-f>Put 8 points into each of two Talent trees to open their Fusion. There are 21, one for every pair of trees.</p>
+<dl class="ent"><div class="row" data-f><dt>Hot Rounds<small>Ballistics + Combustion</small></dt><dd>Kinetic hits set enemies on fire. A Kinetic crit on a Burning enemy detonates it: 4% of max HP to every enemy within 1 tile.</dd></div>
+<div class="row" data-f><dt>Arc Rounds<small>Ballistics + Voltaic</small></dt><dd>A Kinetic crit calls lightning on the target and its 2 nearest neighbors: 3% of max HP as Arc damage, and Shock.</dd></div>
+<div class="row" data-f><dt>Shatterpoint<small>Ballistics + Cryogenics</small></dt><dd>Shatter deals ×2 damage, plus 6% of the enemy's max HP.</dd></div>
+<div class="row" data-f><dt>Death Mark<small>Ballistics + Singularity</small></dt><dd>Kinetic hits deal +10% damage for each Mark on the target.</dd></div>
+<div class="row" data-f><dt>Home Guard<small>Ballistics + Bastion</small></dt><dd>Kinetic towers within 4 tiles of the core deal +50% damage.</dd></div>
+<div class="row" data-f><dt>Called Shots<small>Ballistics + Command</small></dt><dd>After you use an ability, Kinetic towers always crit for 6s, and their crits deal +50% damage.</dd></div>
+<div class="row" data-f><dt>Plasma Front<small>Combustion + Voltaic</small></dt><dd>Overload explosions are 50% larger and also deal 4% of max HP to every enemy they hit.</dd></div>
+<div class="row" data-f><dt>Thermal Fracture<small>Combustion + Cryogenics</small></dt><dd>Thermal Shock triggers at 2 Chill stacks instead of 3. It deals ×2 damage, plus 6% of the enemy's max HP.</dd></div>
+<div class="row" data-f><dt>Dark Flame<small>Combustion + Singularity</small></dt><dd>A Collapse sets every enemy it hits on fire. The Burn deals at least 2% of max HP per second.</dd></div>
+<div class="row" data-f><dt>Slag Harvest<small>Combustion + Bastion</small></dt><dd>Enemies that die while Burning pay +35% credits.</dd></div>
+<div class="row" data-f><dt>Flare<small>Combustion + Command</small></dt><dd>When you use an ability, every enemy on the map Burns for 4s.</dd></div>
+<div class="row" data-f><dt>Cold Circuit<small>Voltaic + Cryogenics</small></dt><dd>Superconduct reaches 50% further, can trigger again after 0.4s, and deals 4% of max HP to every enemy it Shocks.</dd></div>
+<div class="row" data-f><dt>Static Collapse<small>Voltaic + Singularity</small></dt><dd>A Collapse Shocks every enemy it hits for 6s. This Shock is 50% stronger.</dd></div>
+<div class="row" data-f><dt>Free Current<small>Voltaic + Bastion</small></dt><dd>Your first 4 Arc towers use no power.</dd></div>
+<div class="row" data-f><dt>Static Burst<small>Voltaic + Command</small></dt><dd>When you use an ability, every enemy on the map is Shocked for 6s and Stunned for 1s. Bosses are not Stunned.</dd></div>
+<div class="row" data-f><dt>Absolute Zero<small>Cryogenics + Singularity</small></dt><dd>A Collapse Freezes every enemy it hits for 1.5s. Bosses are not affected.</dd></div>
+<div class="row" data-f><dt>Cold Shell<small>Cryogenics + Bastion</small></dt><dd>When an enemy reaches the core, enemies within 4 tiles are Frozen for 2.5s. This can happen once every 3s.</dd></div>
+<div class="row" data-f><dt>Flash Freeze<small>Cryogenics + Command</small></dt><dd>When you use an ability, every enemy on the map is Frozen for 1.5s. Bosses gain 2 Chill stacks instead.</dd></div>
+<div class="row" data-f><dt>Gravity Anchor<small>Singularity + Bastion</small></dt><dd>Enemies within 4 tiles of the core move 35% slower.</dd></div>
+<div class="row" data-f><dt>Dark Signal<small>Singularity + Command</small></dt><dd>When you use an ability, every Marked enemy takes 2% of its max HP for each Mark on it.</dd></div>
+<div class="row" data-f><dt>Emergency Power<small>Bastion + Command</small></dt><dd>When you use an ability, the core shield recharges by 40% and the hull is repaired by 3%.</dd></div></dl></section>
+<section id="enemies"><h2>Enemies</h2>
+<p data-f>Two families attack the core. The hive wants the core's energy to feed on. The Remnant are the war machines of every pilot before you, still running.</p>
+<h3>The hive</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff8a9c">Gnawer<small>from Wave 1</small></dt><dd>Basic ground unit. <em>Beat it: Any tower. Gnawers are dangerous in large numbers.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Swarmer<small>from Wave 2</small></dt><dd>Fast and fragile. Arrives in groups. <em>Beat it: Splash: Swarm Missile, Flame Projector, Arc Coil.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Shellback<small>from Wave 3</small></dt><dd>Slow and heavily Plated: only piercing fire (Rail, Void Lens, Burn) gets through fully. <em>Beat it: Rail Lance, Void Lens or Burn.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Skimmer<small>from Wave 4 · flies</small></dt><dd>Flies straight at the core. Weak to Arc. <em>Beat it: Arc, Pulse, Rail. Flame and Gravity can't reach it.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Clutch<small>from Wave 6</small></dt><dd>An egg cluster. Bursts into 3 Swarmers on death. <em>Beat it: Splash damage, to kill the Swarmers it bursts into.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Phantom<small>from Wave 7</small></dt><dd>Cloaks periodically: towers can't target it while it flickers out. Weak to Void. <em>Beat it: A Relay Pylon or Sensor Sweep reveals it. Void damage is strong against it.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Nurse<small>from Wave 9</small></dt><dd>Heals nearby enemies every second (green beams). <em>Beat it: Kill it first with a Rail Lance or Strike. Burn stops all healing.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Bonewall<small>from Wave 12</small></dt><dd>Shields nearby enemies (blue rings). Resists Kinetic. <em>Beat it: Arc tears shields at 3×.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Mirrorshell<small>from Wave 18</small></dt><dd>Mirrored shell: Pulse bolts, Void Lens beams and Arc chains glance off it (−75%). <em>Beat it: Rail Lance, Swarm Missile, Flame Projector, EMP Mortar.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Matron<small>from Wave 22 · flies</small></dt><dd>A flying brood-mother. Drops a pair of Gnawers every few seconds until it falls. <em>Beat it: Burst anti-air damage (Rail, Missile, Pulse) before it drops its Gnawers.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Bile Tick<small>from Wave 26</small></dt><dd>Spits bile on a tower it passes: that tower is knocked out for 4s. <em>Beat it: Kill it at range (Rail, Missile, the core) or slow it before it reaches your towers.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Leech<small>from Wave 30</small></dt><dd>Steals credits if it reaches the core. It steals more when you hold more credits. <em>Beat it: Kill it before it reaches the core. Spend your credits so it has less to steal.</em></dd></div></dl>
+<h3>The Remnant</h3>
+<p data-f>Contact. That's not the swarm. Old war machines, still running. Some of them were ours. The Remnant disrupt towers but never destroy them. They resist Kinetic by 20% and take 20% more from Arc.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#d8a45a">Husk<small>from Wave 8</small></dt><dd>Remnant scrap. Falls apart when killed, then stands back up 2 s later at 40% HP, once. <em>Beat it: Kill it with splash damage, Burn or an ability, and it stays down.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Bulwark<small>from Wave 14</small></dt><dd>A walking wall. Shots from towers ahead of it do 60% less damage. <em>Beat it: Towers beside or behind it on the road, Swarm Missile, Burn and abilities.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Welder<small>from Wave 16</small></dt><dd>Every 2.5 s repairs the most damaged Remnant near it by 20% of its HP, and stands a fallen Husk back up at once. <em>Beat it: Kill it first. Scan marks it.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Lodestone<small>from Wave 18</small></dt><dd>Pulls bolts and missiles fired within 2.5 tiles into itself and takes 50% from them. Arc does double damage to it. <em>Beat it: Arc, beams, chains and the Rail Lance.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Siege Crawler<small>from Wave 20</small></dt><dd>Plants its legs 4.5 tiles from your nearest tower and shells it offline for 3 s every 6 s. A red laser marks the target first. <em>Beat it: Long range: Rail Lance, Swarm Missile. It stands still while planted.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Adapter<small>from Wave 24</small></dt><dd>Its plating tunes to the last element that hit it and resists that element by 50%. Its colour shows which. <em>Beat it: Towers of two or more elements in reach of it.</em></dd></div>
+<div class="row" data-f><dt style="color:#d8a45a">Warden<small>from Wave 28</small></dt><dd>Leads a squad of 6 Remnant. Squad members within 4 tiles of it take 25% less damage. When it dies they are stunned for 1.5 s. <em>Beat it: Focus it: Scan, Strike, Rail Lance.</em></dd></div></dl>
+<h3>Others</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff8a9c">Pirate Skiff<small>special · flies</small></dt><dd>Swoops in to steal unclaimed salvage. Shoot it down to recover the loot. Never attacks the core. <em>Beat it: Anti-air towers, before it escapes.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Voidling<small>special · flies</small></dt><dd>A flying enemy that a Maelstrom spawns. <em>Beat it: Arc and anti-air.</em></dd></div></dl>
+<h3>Elites</h3>
+<p data-f>An elite is an enemy with 1 or more elite affixes. Elites come Overgrown: larger, and covered in glowing spines.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#7fd4ff">Shielded</dt><dd>Starts with a shield worth 40% of max HP.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Hasted</dt><dd>+40% speed.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Regenerating</dt><dd>Regenerates 2% HP per second.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Teleporting</dt><dd>Teleports forward every 5s.</dd></div>
+<div class="row" data-f><dt style="color:#ff9ad5">Splitting</dt><dd>Splits into 2 copies with 30% HP on death.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Unstoppable</dt><dd>+30% HP. Slows and Stuns are 70% weaker.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Volatile</dt><dd>Disables nearby towers for 2s on death.</dd></div>
+<div class="row" data-f><dt style="color:#efe6cf">Resistant</dt><dd>+50% resistance to one element.</dd></div></dl>
+<h3>Evolution</h3>
+<p data-f>The swarm breeds against your defense. Enemies that get furthest pass on their genes, so the traits your defense handles badly spread. From Wave 8 on Normal enemies carry genes: up to 1 until Wave 22, 2 until Wave 45, then 3. Marks on each enemy show its genes.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#c8ccd8">Plating</dt><dd>Reduces damage from everything except piercing fire. Counter: Rail, Void Lens, Burn.</dd></div>
+<div class="row" data-f><dt style="color:#9ad8ff">Wings</dt><dd>Flies over ground defenses. Counter: anti-air (not Flame or Gravity).</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Haste</dt><dd>+40% speed. Counter: Cryo, Gravity, EMP, Snare.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Bulk</dt><dd>+40% HP, slower. Counter: Void Lens, Rail.</dd></div>
+<div class="row" data-f><dt style="color:#ff9ad5">Brood</dt><dd>Bursts into 3 mites when killed. Counter: Missile, Flame, Coil.</dd></div>
+<div class="row" data-f><dt style="color:#7fd4ff">Shell</dt><dd>Shield worth 60% of HP. It recharges when left alone, unless Arc has hit it in the last 3s. Counter: Arc Coil, EMP.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Regrowth</dt><dd>Heals 2.5%/s unless Burning. Counter: Flame, Missile.</dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Ward</dt><dd>50% resist to one element. Counter: any other element.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Cloak</dt><dd>Cloaks on and off. Counter: Relay Pylon, the core's light.</dd></div></dl>
+<h3>Strain Assaults</h3>
+<p data-f>Every few waves the swarm reads your defense and sends one strain built to beat it. The assault is announced a wave ahead, and selling is free until it lands. Hold it and the strain is defeated: +1 power and a bounty. Strains get names from their genes, like Zoomwing and Fortress.</p>
+<h3>Nemesis</h3>
+<p data-f>A boss or strain that ends your run becomes your Nemesis and comes back in the next run. Beat it for a double bounty. Lose to it again and it ranks up.</p></section>
+<section id="bosses"><h2>Bosses</h2>
+<p data-f>A boss lands every 10 waves. Each boss has three phases and a power it uses as it weakens, and its own music theme. There are 13: 5 hive monsters and 8 that are stranger. Killing a boss pays a boon.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff4d6a">Behemoth<small>hive</small></dt><dd>Spawns Swarmers. Power: a quake and a swarm. <em>Wanted for property damage.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Hive Queen<small>hive · flies</small></dt><dd>Flies. Spawns Skimmers. Power: a skimmer storm. <em>Wanted for an unlicensed breeding program.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Phase Wraith<small>hive</small></dt><dd>Teleports forward and cloaks. Slowing it delays the next jump, and so does Shock or a Mark. Power: a long phase-jump. <em>Wanted for trespassing (repeatedly).</em></dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Overmind<small>hive</small></dt><dd>Disables nearby towers. Power: a massive EMP. <em>Wanted for identity theft.</em></dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Titan<small>hive</small></dt><dd>Armor breaks at 66% and 33% HP. Power: a shattering stomp. <em>Wanted for being a wall.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Leia<small>oddball</small></dt><dd>Shreds nearby towers offline like they're the couch. Naps mid-lane, and takes far less damage while asleep. Power: the zoomies. <em>Wanted for knocking things off tables.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Gloop<small>oddball</small></dt><dd>Splits into two smaller Gloops on death. Twice. <em>Wanted for loitering.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Space Whale<small>oddball · flies</small></dt><dd>Flies. Its song heals every enemy nearby. Power: a healing chorus. <em>Wanted for singing without a permit.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Quackzilla<small>oddball</small></dt><dd>Fast. Every quack hops it forward and startles towers nearby. Power: a mega-quack. <em>Wanted for disturbing the peace.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Flying Spaghetti Monster<small>oddball · flies</small></dt><dd>Flies. Noodly appendages seize towers. Drops meatballs. Power: every noodle at once. <em>Wanted for impersonating a deity.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">Wormhole Worm<small>oddball · from Wave 15</small></dt><dd>Burrows through wormholes and resurfaces further down the road, swallowing towers. Sometimes it hunts your best one. Kill it to get them back. Power: a feeding frenzy. <em>Wanted for eating public property.</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">The Auditor<small>oddball · from Wave 10</small></dt><dd>Drains your credits while alive and freezes your best towers pending review. Kill him for a full refund, plus interest. Power: a full audit. <em>Wanted for tax evasion (ironic).</em></dd></div>
+<div class="row" data-f><dt style="color:#ffb03a">The Immortal Snail<small>oddball · from Wave 25</small></dt><dd>Barely moves. Barely dies. Heals whenever you stop shooting, and its slime trail speeds up everything behind it. Power: a second wind. <em>Wanted for speeding (allegedly).</em></dd></div></dl>
+<h3>Most Wanted</h3>
+<p data-f>Every run names one boss Most Wanted, with a mutation and a bounty. Killing it claims the bounty.</p>
+<dl class="ent"><div class="row" data-f><dt>Colossal</dt><dd>×1.6 health, 50% larger and 20% slower.</dd></div>
+<div class="row" data-f><dt>Twin</dt><dd>Two of them, each at 60% health, 3 s apart.</dd></div>
+<div class="row" data-f><dt>Hasted</dt><dd>35% faster, 25% less health.</dd></div>
+<div class="row" data-f><dt>Armored</dt><dd>Takes 30% less damage from everything.</dd></div>
+<div class="row" data-f><dt>Spectral</dt><dd>Cloaks for 2 s every 7 s.</dd></div>
+<div class="row" data-f><dt>Loaded</dt><dd>Double bounty, and it drops a Captain's Chest where it dies.</dd></div></dl>
+<h3>Boons</h3>
+<p data-f>After a boss you pick one of three boons. A boon lasts for the rest of the run.</p>
+<dl class="ent"><div class="row" data-f><dt>Amplified Grid</dt><dd>+12% Damage.</dd></div>
+<div class="row" data-f><dt>Hyperthreading</dt><dd>+10% Attack Speed.</dd></div>
+<div class="row" data-f><dt>Salvage Rights</dt><dd>+20% Credits.</dd></div>
+<div class="row" data-f><dt>Targeting Suite</dt><dd>+10% Crit Chance.</dd></div>
+<div class="row" data-f><dt>Arc Lattice</dt><dd>+1 Chain for all chaining attacks.</dd></div>
+<div class="row" data-f><dt>Weather Control</dt><dd>+40% storm effects.</dd></div>
+<div class="row" data-f><dt>Core Rebuild</dt><dd>+25% core max HP. Fully repairs the core.</dd></div>
+<div class="row" data-f><dt>Recalibration Cache</dt><dd>+2 Recalibration tokens and 1 random ability charge.</dd></div>
+<div class="row" data-f><dt>Forbidden Schematic</dt><dd>Your next 3 towers roll a Legendary affix.</dd></div>
+<div class="row" data-f><dt>Mutation Pulse</dt><dd>All towers gain a random affix.</dd></div>
+<div class="row" data-f><dt>Cheap Dice</dt><dd>Rerolls cost 50% less.</dd></div>
+<div class="row" data-f><dt>War Chest</dt><dd>Gain 25 credits per wave reached.</dd></div>
+<div class="row" data-f><dt>Spare Reactor</dt><dd>+2 power for the rest of the run.</dd></div></dl></section>
+<section id="map"><h2>The Map</h2>
+<dl class="ent"><div class="row" data-f><dt>Wormhole</dt><dd>The origin of a road. New wormholes can open on any side of the core. A forming wormhole shows its future road for one wave, then comes a checkpoint, then it opens and the map grows. On Normal they open at Waves 15, 28, 42, 58, 78.</dd></div>
+<div class="row" data-f><dt>Checkpoint</dt><dd>Before a wormhole's first wave, once the field is clear, the next wave waits 90 s. The game keeps running: Lift Off has no cooldown, selling refunds 100%, tower moves are free and Talents respec for free. Start early for bonus credits and score.</dd></div>
+<div class="row" data-f><dt>Zone</dt><dd>The contract a run is fought under: which enemies come most, the weather, the events, the Most Wanted boss, plus a perk and a drawback. You pick one of three at the start, and a new one through a jump door at every bounty.</dd></div>
+<div class="row" data-f><dt>Jump door</dt><dd>After a bounty you can push on through one of three doors: a new zone for the next 20 waves. Steady (purse ×1.25: no extra danger), Hot (purse ×1.4: +12% enemy hp · +10% score), Deadly (purse ×1.6: +25% enemy hp, more elites · +25% score).</dd></div>
+<div class="row" data-f><dt>Escalation</dt><dd>From Wave 50, each boss wave makes you choose one of two permanent twists. They stack, and each one raises your score and XP.</dd></div>
+<div class="row" data-f><dt>Chaos</dt><dd>Calm (score ×0.8), Normal (score ×1), Unstable (score ×1.35), Pandemonium (score ×1.8). Higher Chaos means more events, storms and elites, a bigger map and a swarm that evolves sooner.</dd></div></dl>
+<h3>Zones</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#6ae2ff">Quiet Drift</dt><dd>Few enemies and mild storms. A good zone to learn in. Perk: +10% Credits. Drawback: −10% score.</dd></div>
+<div class="row" data-f><dt style="color:#ff9ad5">The Hive</dt><dd>Brood nests on every lane. Swarmers come by the hundred. Perk: +1 Chain, +15% Thermal Damage. Drawback: +10% enemy speed.</dd></div>
+<div class="row" data-f><dt style="color:#c8ccd8">Iron Reach</dt><dd>Shellbacks and Bonewalls push slowly down the road. Perk: +15% armor piercing. Drawback: +6% enemy HP.</dd></div>
+<div class="row" data-f><dt style="color:#7fb4ff">Open Skies</dt><dd>No roads up here. Skimmers and Matrons fly straight in. Perk: +20% Arc Damage, +8% Range. Drawback: +10% tower cost.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Ghost Lanes</dt><dd>Phantoms cloak in and out. Bring a Relay Pylon to reveal them. Perk: +25% Void Damage. Drawback: −10% Range.</dd></div>
+<div class="row" data-f><dt style="color:#e0a458">Salvage Belt</dt><dd>Rich wrecks and pirate traffic. Leeches steal your banked credits. Perk: +25% Credits. Drawback: +15% upgrade cost.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Tempest Front</dt><dd>Storms come one after another. Skimmers and Matrons come with them. Perk: Storms arrive twice as often and are 40% stronger. Drawback: +10% enemy speed.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Demolition Row</dt><dd>Bile Ticks knock your towers out. Clutches burst into Swarmers. Perk: +10% Attack Speed. Drawback: More Elites.</dd></div>
+<div class="row" data-f><dt style="color:#8ee35a">Green Choir</dt><dd>Nurses heal and enemies regrow. Anything you leave alive heals back. Perk: +15% Thermal Damage, Burn +30%. Drawback: Enemies regenerate 0.5% HP per second.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">The Odd Belt</dt><dd>The strange bosses live here. Expect the cat. Perk: Oddball bosses drop 3× credits. Drawback: Every boss wave brings an oddball.</dd></div></dl>
+<h3>Escalations</h3>
+<dl class="ent"><div class="row" data-f><dt>Twin Bosses<small>+20% score</small></dt><dd>Every boss arrives with a twin. Each has 65% health.</dd></div>
+<div class="row" data-f><dt>Torn Space<small>+15% score</small></dt><dd>Every wave opens a Rift: some enemies start halfway down the road.</dd></div>
+<div class="row" data-f><dt>Elite Plating<small>+12% score</small></dt><dd>Elites carry one more affix.</dd></div>
+<div class="row" data-f><dt>Hostile Weather<small>+12% score</small></dt><dd>Enemies inside storms move 25% faster. Storms come 50% more often.</dd></div>
+<div class="row" data-f><dt>Quick Study<small>+12% score</small></dt><dd>The swarm learns twice as fast.</dd></div>
+<div class="row" data-f><dt>Matron Flight<small>+15% score</small></dt><dd>Matrons headline every wave.</dd></div>
+<div class="row" data-f><dt>Blitz<small>+15% score</small></dt><dd>Enemies spawn 25% faster and move 6% faster.</dd></div>
+<div class="row" data-f><dt>New Wormhole<small>+15% score</small></dt><dd>A new wormhole opens in 2 waves.</dd></div></dl>
+<h3>Storms</h3>
+<p data-f>Storms drift across the map. Each one boosts an element: towers of that element inside it glow and hit harder. Each storm also hits the enemies under it, and the probe can harvest it for an ability charge.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ffe14d">Ion Storm</dt><dd>+40% Arc Damage. Lightning strikes enemies under it. Probe harvest: Strike.</dd></div>
+<div class="row" data-f><dt style="color:#ff7b39">Solar Flare</dt><dd>+40% Thermal Damage. Enemies under it Burn. Probe harvest: Frenzy.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Cryo Front</dt><dd>+40% Cryo Damage. Slows and Chills enemies. Probe harvest: Stasis.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Void Tide</dt><dd>+40% Void Damage. Enemies take +10% damage and gain Marks. Probe harvest: Nova.</dd></div>
+<div class="row" data-f><dt style="color:#a59f92">Static Haze</dt><dd>+40% Kinetic Damage, −15% Range. Reveals cloaked enemies. Probe harvest: Scan.</dd></div>
+<div class="row" data-f><dt>Plasma Tempest</dt><dd>A merged storm: Ion Storm + Solar Flare. Both effects.</dd></div>
+<div class="row" data-f><dt>Frostfire Vortex</dt><dd>A merged storm: Cryo Front + Solar Flare. Both effects.</dd></div>
+<div class="row" data-f><dt>Superconductor Front</dt><dd>A merged storm: Cryo Front + Ion Storm. Both effects.</dd></div>
+<div class="row" data-f><dt>Event Squall</dt><dd>A merged storm: Ion Storm + Void Tide. Both effects.</dd></div>
+<div class="row" data-f><dt>Dark Corona</dt><dd>A merged storm: Solar Flare + Void Tide. Both effects.</dd></div>
+<div class="row" data-f><dt>Absolute Drift</dt><dd>A merged storm: Cryo Front + Void Tide. Both effects.</dd></div>
+<div class="row" data-f><dt>Railstorm</dt><dd>A merged storm: Ion Storm + Static Haze. Both effects.</dd></div>
+<div class="row" data-f><dt>Cinder Gale</dt><dd>A merged storm: Solar Flare + Static Haze. Both effects.</dd></div>
+<div class="row" data-f><dt>Hailfront</dt><dd>A merged storm: Cryo Front + Static Haze. Both effects.</dd></div>
+<div class="row" data-f><dt>Null Static</dt><dd>A merged storm: Static Haze + Void Tide. Both effects.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Maelstrom</dt><dd>Forms when storms of 3 types merge. +75% Damage inside. Collapses after 30 s and spawns Voidlings.</dd></div></dl>
+<h3>Events</h3>
+<p data-f>Some waves roll an event. Green ones help you.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff8a9c">Surge<small>from Wave 5</small></dt><dd>+35% enemy speed.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">EMP Storm<small>from Wave 8</small></dt><dd>Towers randomly shut down.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Rift Breach<small>from Wave 6</small></dt><dd>Enemies spawn mid-path.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Swarm Tide<small>from Wave 5</small></dt><dd>60% more enemies at 60% HP.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Elite Tide<small>from Wave 10</small></dt><dd>More Elites (up to 6 in 10).</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Blackout<small>from Wave 12</small></dt><dd>−20% tower Range.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Nanite Bloom<small>from Wave 14</small></dt><dd>Enemies regenerate HP.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Phase Shift<small>from Wave 16</small></dt><dd>Enemies teleport forward.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Gold Rush<small>from Wave 5</small></dt><dd>×2 Credits.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Overcharge<small>from Wave 5</small></dt><dd>+30% Attack Speed.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Meteor Shower<small>from Wave 7</small></dt><dd>Meteors strike the path.</dd></div></dl>
+<h3 id="blackhole">Black Hole</h3>
+<p data-f>From Wave 20, about 3 to 5 times in 100 waves, on no set waves. A marker shows where a Black Hole will land, 8 seconds ahead.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#b86cff">The pull</dt><dd>The hole lands on your biggest build and pulls every tower within 12 tiles toward it, faster near the center. A tower that reaches the center is swallowed: 2 at first, up to 10 in later waves. A tower on a Power Node, or docked under the core, holds.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Mass</dt><dd>Every enemy killed within 12 tiles of the hole adds Mass (an elite adds 3), and so does every enemy that falls in. You have 45 seconds to fill it.</dd></div>
+<div class="row" data-f><dt style="color:#fff1b8">White Hole</dt><dd>Fill the Mass and the hole becomes a White Hole. Every tower it ate comes back one level higher, and a Newborn Star stays on the field and lifts the Damage of towers near it.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Starved</dt><dd>A hole that is not filled keeps your towers for 2 to 4 waves, scars the ground and spits Voidlings.</dd></div>
+<div class="row" data-f><dt>What to do</dt><dd>Bring the fight to it. Move your best towers off its center, keep the rest firing into its field, and save a Strike for a Gravity Bomb.</dd></div></dl></section>
+<section id="probe"><h2>The Probe and Loot</h2>
+<p data-f>The probe is your scout ship. It sits on the core, costs nothing, and brings salvage home on its own.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#9fd8ff">Probe</dt><dd>Tap Probe, then tap a site, a storm or the core to send it. A tap on open ground drops a marker: tap the marker to send it there. It flies at 2 tiles per second. When docked it slowly repairs the core.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Cargo</dt><dd>The probe carries loot and banks it when it docks at the core. A lost probe leaves its cargo in a wreck you can salvage.</dd></div>
+<div class="row" data-f><dt style="color:#ff6ad5">Wreckage</dt><dd>A quick grab: 2.5 s on top of it. Credits, and 35% of the time an ability charge.</dd></div>
+<div class="row" data-f><dt style="color:#b98cff">Gas Cloud</dt><dd>Harvest inside it for 12 s: credits and Entropy as it drains. Static costs 1.5% hull per second.</dd></div>
+<div class="row" data-f><dt style="color:#8c7a66">Asteroid</dt><dd>It drifts. Mine it in 3 chunks of credits. Crystal asteroids (20%) add a charge and a token.</dd></div>
+<div class="row" data-f><dt style="color:#ffd84a">Rich Site</dt><dd>Gold trim, from Wave 8: ×2.5 loot and 1 more guard.</dd></div>
+<div class="row" data-f><dt style="color:#ff5a7a">Guard</dt><dd>A neutral drone or brute (Brutes from Wave 15). It attacks the probe within 4 tiles of its site. Guards grow with the wave.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Jackpot</dt><dd>2% per site, more with guards. It pays a boon pick or a full Entropy gauge.</dd></div>
+<div class="row" data-f><dt style="color:#9fd8ff">Probe upgrades</dt><dd>Lance, Armor, Engine, Rig, Scanner. 3 levels each. The Lance is a weapon for guards, the Rig speeds up harvesting and mining, and the Scanner adds vision and +10% loot per level.</dd></div>
+<div class="row" data-f><dt style="color:#ff8a9c">Rebuild</dt><dd>A lost probe costs 120 + 12 per wave credits, then 40 s in the yard. Upgrades stay.</dd></div></dl>
+<h3>Pirates and crates</h3>
+<p data-f>Pirate ships fly over during waves and drop crates. Their captains have names: Captain Rustbeard, Black Static, Mad Mags Vortex, One-Eye Orrin, Calico Jett, Nebula Nell, Scurvy Quasar, Red Ronin Rook, Dread Pixel Pete, Salty Sal Saturn.</p>
+<dl class="ent"><div class="row" data-f><dt>Salvage Cache</dt><dd>Drops during waves from Wave 3 and decays in 22 s. Tap it for credits, an ability charge, Entropy, score or a Recalibration token. A tower next to a crate collects it for you.</dd></div>
+<div class="row" data-f><dt style="color:#ffd84a">Golden crate</dt><dd>Pays more.</dd></div>
+<div class="row" data-f><dt style="color:#ff4d6a">Cursed Cache</dt><dd>Booby-trapped loot, red, from Wave 10. Double reward, but a stowaway pirate (an elite) breaks loose.</dd></div>
+<div class="row" data-f><dt style="color:#ffd84a">Captain's Chest</dt><dd>A golden crate the pirate flagship drops once per boss wave. Either your next tower rolls a Legendary, or triple credits plus an ability charge.</dd></div>
+<div class="row" data-f><dt>Pirate Skiff</dt><dd>From Wave 5, a crate left too long sometimes draws a skiff. It grabs the crate and escapes. Shoot it down for a bounty and the loot. A skiff never attacks the core.</dd></div></dl>
+<h3>The Exchange</h3>
+<p data-f>From Wave 10 the Score button opens the Exchange. The Black Market stocks 3 items and restocks every 10 waves. Prices rise with the wave.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff8a2a">Forbidden Schematic</dt><dd>Your next 2 towers roll a Legendary affix.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Stolen Blueprint</dt><dd>Unlocks your next locked tower for this run.</dd></div>
+<div class="row" data-f><dt style="color:#ffd84a">Boss Bribe</dt><dd>The next boss arrives at 70% health. Even the Auditor takes bribes.</dd></div>
+<div class="row" data-f><dt style="color:#6ae2ff">Node Beacon</dt><dd>Tap an empty tile: it becomes a Power Node.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Ability Crate</dt><dd>+1 charge of every ability.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Recalibration Kit</dt><dd>+2 Recalibration tokens.</dd></div>
+<div class="row" data-f><dt style="color:#b86cff">Fake Star Map</dt><dd>The swarm forgets what it learned: evolution starts over and the next Strain Assault is pushed back 3 waves.</dd></div>
+<div class="row" data-f><dt style="color:#ff9ad5">Mutagen Vial</dt><dd>Every tower gains a random affix.</dd></div>
+<div class="row" data-f><dt style="color:#ffe14d">Battle Medal</dt><dd>Your top-damage tower gains a Veteran rank.</dd></div>
+<div class="row" data-f><dt style="color:#59f0b4">Spare Nuke</dt><dd>Rearms the Nuke after you have used it.</dd></div>
+<div class="row" data-f><dt>Cash In</dt><dd>Trade credits for score. The rate rises every wave.</dd></div></dl></section>
+<section id="entropy"><h2>Entropy and Anomalies</h2>
+<p data-f>Kills fill the Entropy gauge. When it is full you draw an Anomaly: a permanent twist for the run, with a bonus and a cost.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#d6a6ff">How cards are made</dt><dd>Most cards are built at each draw: 1 boon and 1 cost, sized to a fair trade. Rare and Exotic cards swing harder, and Exotic cards carry 2 boons. Offers favor the elements you field. Each slot has a 1 in 4 chance to hold a Classic card, and a Classic never repeats in a run.</dd></div>
+<div class="row" data-f><dt>Stabilize</dt><dd>Decline an Anomaly for +10% score and a Recalibration token.</dd></div>
+<div class="row" data-f><dt>Recalibration token</dt><dd>From boss kills, Stabilize and crates. Spend one to reroll a tower's affixes or to refund a talent mid-run.</dd></div>
+<div class="row" data-f><dt>Milestone</dt><dd>A score threshold. It grants an extra ability charge and a small bonus: +4% Damage, +4% Attack Speed, +3% Range, +2% Crit Chance, +4% Credits, +8 core HP.</dd></div></dl>
+<h3>Classic Anomalies</h3>
+<dl class="ent"><div class="row" data-f><dt style="color:#d6a6ff">Twin Suns</dt><dd>+60% Thermal Damage. <span class="bad">Cost: Enemies regenerate 1% HP per second.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Glass Sky</dt><dd>+35% Damage. <span class="bad">Cost: No core shield.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Overpressure</dt><dd>+30% Attack Speed. <span class="bad">Cost: Attacks have a 2% chance to jam.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Blood Price</dt><dd>All towers gain a Legendary affix. <span class="bad">Cost: −30% core max HP.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Hungry Core</dt><dd>×3 core Damage, +1 core Range. <span class="bad">Cost: Core loses 4% HP each wave.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Fractal Rounds</dt><dd>Bullets and missiles split into 2 shards. <span class="bad">Cost: −10% Range.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Elemental Flux</dt><dd>Every 20s, one element deals ×2 damage. <span class="bad">Cost: Other elements deal −15%.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Storm Magnet</dt><dd>Storms are 3× as frequent and drift toward towers. <span class="bad">Cost: Enemies in storms move 20% faster.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Time Debt</dt><dd>×1.4 score. <span class="bad">Cost: Wave countdown halved.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Volatile Matter</dt><dd>Enemies explode on death for 15% of max HP. <span class="bad">Cost: +15% enemy speed.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Echo Chamber</dt><dd>Towers have a 15% chance to attack twice. <span class="bad">Cost: +25% upgrade cost.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Scavenger</dt><dd>Selling refunds 90%. <span class="bad">Cost: +15% tower cost.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Critical Mass</dt><dd>+20% Crit Chance, +50% Crit Damage. <span class="bad">Cost: −25% damage on non-crits.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Long Night</dt><dd>+45% Damage. <span class="bad">Cost: −20% Range.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Permafrost</dt><dd>×2 Chill strength, +15% chance to Chill. <span class="bad">Cost: −40% Thermal Damage.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Prism Rain</dt><dd>Hits apply a random status. <span class="bad">Cost: −10% Damage.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Entropy Engine</dt><dd>Entropy fills 2× faster. <span class="bad">Cost: Many more Elites.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Gold Fever</dt><dd>+50% Credits. <span class="bad">Cost: +25% enemy HP.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Last Stand</dt><dd>+60% Damage while the core is below 50% HP. <span class="bad">Cost: Core repairs disabled.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Mutagen</dt><dd>Each wave, a random tower gains an affix. <span class="bad">Cost: Every 3rd wave, it gains a Curse instead.</span></dd></div>
+<div class="row" data-f><dt style="color:#d6a6ff">Gravity Inversion</dt><dd>−15% ground enemy speed. <span class="bad">Cost: 3× as many Skimmers.</span></dd></div></dl></section>
+<section id="hunt"><h2>Bounties and the Daily Hunt</h2>
+<dl class="ent"><div class="row" data-f><dt>Most Wanted</dt><dd>Each run posts a bounty: one boss with a mutation. Killing it claims the bounty. The next one comes 20 waves later.</dd></div>
+<div class="row" data-f><dt>Bounty Purse</dt><dd>60% of the XP you earn is banked at once. The rest is held in the purse. Each bounty claimed grows it ×1.5, and each jump door multiplies it again. If your core falls you keep 30%.</dd></div>
+<div class="row" data-f><dt>Extract</dt><dd>End the run as a win and bank the whole purse, with +50% XP.</dd></div>
+<div class="row" data-f><dt>Push</dt><dd>Go on through a jump door toward the next bounty: ×1.25 score for each bounty you push past.</dd></div>
+<div class="row" data-f><dt>Daily Hunt</dt><dd>One run a day with the same map, zone, bounty, Nemesis, Talent build and dice for every pilot. The build has 40 points, two Capstones and their towers. Your first run of the day is ranked: best wave first, then score. Opens at Level 20 and stays open after a Supernova.</dd></div>
+<div class="row" data-f><dt>Hunt code</dt><dd>Every input is recorded. Share a hunt code and a friend can watch your run back, tap for tap.</dd></div></dl></section>
+<section id="progress"><h2>Progression and Ranks</h2>
+<dl class="ent"><div class="row" data-f><dt>XP and levels</dt><dd>Runs pay XP from score and the Bounty Purse. Each level is a Talent point.</dd></div>
+<div class="row" data-f><dt>Supernova</dt><dd>Hold 2 Capstones and reach the required level (Level 30 for the first, more each time) to go Supernova. You lose your level and Talents. You keep one Capstone for good, pick a Cosmic Law, and get an emblem, a new core color and a core light 1 tile wider (up to 5).</dd></div>
+<div class="row" data-f><dt>Career rank</dt><dd>Your career rank counts every XP you have ever earned, and a Supernova never lowers it. The service ranks run from Recruit to Fleet Admiral, each in three grades. Above them are the star classes, ranked by heat, and one rank above those.</dd></div>
+<div class="row" data-f><dt>Days served</dt><dd>Each rank also needs days served, so nobody rushes the ladder. A day counts when you play a real run to Wave 20 or more.</dd></div>
+<div class="row" data-f><dt>Hidden ranks</dt><dd>A rank, emblem or core color you have not earned shows only a "?". I am keeping those out of this Wiki too.</dd></div>
+<div class="row" data-f><dt>Career card</dt><dd>Counts your kills, bosses, elites, damage and time, with normal runs and Daily Hunts apart. Open it from your rank in the Hangar.</dd></div>
+<div class="row" data-f><dt>Archive</dt><dd>Keeps what you have met: the Swarm Collection, Tower Mastery and your records.</dd></div></dl>
+<h3>Cosmic Laws</h3>
+<p data-f>A permanent rule change you pick at each Supernova. Every law adds score.</p>
+<dl class="ent"><div class="row" data-f><dt style="color:#ff9adf">Heavy Gravity</dt><dd>Ground enemies move 12% slower. <span class="bad">Cost: Bosses have double HP.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Red Shift</dt><dd>+20% tower Range. <span class="bad">Cost: +20% enemy HP.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Cat Nebula</dt><dd>Oddball bosses drop 3× credits. <span class="bad">Cost: Every boss wave brings an oddball.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Dark Bloom</dt><dd>Elites drop 2× credits. <span class="bad">Cost: Elites are far more common.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Lean Times</dt><dd>+30% Damage. <span class="bad">Cost: −25% Credits.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Swarm Law</dt><dd>Enemies have 20% less HP. <span class="bad">Cost: 35% more enemies per wave.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Entropic Tide</dt><dd>Entropy fills 2× faster. <span class="bad">Cost: Enemies move 8% faster.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Stormfront</dt><dd>Storms hit 40% harder. <span class="bad">Cost: Storms arrive twice as often.</span></dd></div>
+<div class="row" data-f><dt style="color:#ff9adf">Brittle Star</dt><dd>+60% core Damage, +1 core Range. <span class="bad">Cost: −25% core max HP.</span></dd></div></dl></section>
+<section id="training"><h2>Training and the Field Manual</h2>
+<p data-f>Training is optional. Basic Training is one guided run. The Field Manual holds a short lesson for every system, and each lesson pays XP once.</p>
+<h3>Basics</h3>
+<dl class="ent"><div class="row" data-f><dt>Towers and Elements</dt><dd>Every tower has an element: Kinetic, Thermal, Cryo, Arc or Void. Enemies resist some and are weak to others. <em>When: Every build. The Threat Board says what the next wave is weak to.</em></dd></div>
+<div class="row" data-f><dt>Upgrades, Specs and Selling</dt><dd>Tap a built tower to open its panel. Upgrade raises its level: more damage and a random bonus (an affix). At LV 3 you pick one of two specs permanently. LV 5 is the highest level. After that, a tower can Ascend to gain a perk. A tower in the wrong spot can Move for a small fee and keep its upgrades, or be sold for 70% of what you put in. <em>When: When power is full, or a tower already sits in the right spot.</em></dd></div>
+<div class="row" data-f><dt>Power, Reactor and Core</dt><dd>Each tower draws 1 power. Capacity grows by 1 every 3 waves; the reactor adds more for credits. The core has its own upgrades: Battery (its gun, and a docked tower), Shield, Hull and Uplink. <em>When: When the power readout is full and you still have credits.</em></dd></div>
+<div class="row" data-f><dt>Lift Off and Docking</dt><dd>Your core can fly. Tap Lift Off, pick a landing spot and read the preview. Land on an attack tower to dock it as a second gun at ×2 damage and +1 range. The core’s own gun keeps firing. The landed core links its 3 nearest attack towers within 4 tiles (+10% damage and attack rate each). Any tower can Move from its panel. <em>When: Whenever the swarm changes: a new road, a strain warded against your main element, a boss on the way. After a landing, Lift Off recharges for 3 waves.</em></dd></div>
+<div class="row" data-f><dt>Overcharge</dt><dd>Overcharge spends spare power on a tower: +35% damage per step, 1 power per step. <em>When: When you have power left over and one tower doing most of the work.</em></dd></div>
+<div class="row" data-f><dt>Abilities and Charges</dt><dd>Five abilities on the left rail, each on its own cooldown. Strike hits an area, Stasis freezes everything, Frenzy speeds up your towers, Nova damages every enemy, Scan reveals cloaked enemies and marks the largest threat. <em>When: On a dense pack, a boss, or a wave that is leaking.</em></dd></div>
+<div class="row" data-f><dt>Crates and Salvage</dt><dd>Drop ships leave crates on the map: credits, ability charges or tokens. Crates disappear after a while. Golden crates pay more. Cursed crates carry a penalty. <em>When: From Wave 3, between and during waves.</em></dd></div>
+<div class="row" data-f><dt>Probe and Loot Sites</dt><dd>The probe sits on the core. Select it and tap a site to send it: it salvages a wreck, harvests a gas cloud or mines a rock, then flies home on its own and banks the cargo at the core. Red drones guard some sites and shoot it. Upgrades (Armor, Engine, Lance and more) make it tougher and let it fight back. <em>When: From Wave 2, all run long.</em></dd></div></dl>
+<h3>Advanced</h3>
+<dl class="ent"><div class="row" data-f><dt>The Swarm Adapts</dt><dd>The swarm breeds against your defense. Enemies that get furthest pass on their genes (Plating, Shell, Ward, Haste…). Marks on each enemy show its genes. <em>When: From Wave 8 on Normal. The Threat Board shows what it is breeding and why.</em></dd></div>
+<div class="row" data-f><dt>Bounties and the Purse</dt><dd>Each run posts a Most Wanted boss. Killing it claims the bounty. Some of your XP is held in the Bounty Purse. Extract deposits all of it and ends the run as a win. A jump door takes you to a new zone for a larger purse. If the core falls later, you keep 30%. <em>When: Every 20 waves.</em></dd></div>
+<div class="row" data-f><dt>Veterans, Affixes, Resonance</dt><dd>Towers that fight earn veteran ranks; each rank offers a mutation. Affixes are the bonuses a tower rolls on upgrades. Towers of different elements side by side resonate: +8% damage each. <em>When: Whenever the Ready button shows a count; whenever you place a tower.</em></dd></div>
+<div class="row" data-f><dt>Pylon and Forge</dt><dd>The Relay Pylon boosts damage and attack speed of towers in its range and reveals cloaked enemies. The Credit Forge pays credits every wave. <em>When: Pylon: when towers are clustered. Forge: early in a long run.</em></dd></div>
+<div class="row" data-f><dt>Storms and Anomalies</dt><dd>Storms drift across the map and boost one element: towers of that element inside a storm glow and hit harder. Each storm also hits the enemies under it (lightning, burns, frost, Marks or a reveal), and your probe can harvest a storm for an ability charge. Kills fill the Entropy gauge; when it is full you draw an Anomaly, a permanent twist with an upside and a downside. <em>When: Storms from Wave 6. Anomalies whenever the gauge fills.</em></dd></div>
+<div class="row" data-f><dt>Black Hole</dt><dd>A marker shows where a Black Hole will land, 8 seconds ahead. It lands on your biggest build and pulls every tower within 12 tiles toward it, faster near the center. A tower that reaches the center is swallowed: 2 at first, more in later waves. A tower on a Power Node, or docked under the core, holds. Every enemy killed within 12 tiles of it adds Mass, and so does every enemy that falls in (within 5 tiles). Fill its Mass in 45 seconds and it becomes a White Hole: a Newborn Star stays on the field and lifts the Damage of towers near it, and every tower it ate comes back one level higher. Starved, it keeps them for 2 to 4 waves, scars the ground and spits voidlings. A Strike aimed inside it becomes a Gravity Bomb that drags enemies in. <em>When: From Wave 20, 3 to 5 times in 100 waves. No set waves.</em></dd></div>
+<div class="row" data-f><dt>Wormholes and Checkpoints</dt><dd>Every so often a wormhole opens a new road and the map grows. Nothing can be built within 4 tiles of a wormhole. The wave before it lands is a checkpoint: the next wave waits 90 s. Full refunds, free tower moves, a free respec and Lift Off with no cooldown until it starts. <em>When: At set waves (Normal: 15, 28, 42…).</em></dd></div>
+<div class="row" data-f><dt>Strain Assaults</dt><dd>Every few waves the swarm reads your defense and sends one strain built to beat it. It is announced a wave ahead, and selling is free (a refit) until it lands. If you hold it, the strain is defeated: +1 power and a bounty. <em>When: Normal: from Wave 14, every 8 waves.</em></dd></div>
+<div class="row" data-f><dt>Bosses, Boons and Nemesis</dt><dd>A boss lands every 10 waves. It has phases and powers, and if it reaches the core the run ends. Killing one pays a boon: one of three permanent bonuses. A boss or strain that ends your run becomes your Nemesis and comes back next run. <em>When: Wave 10, 20, 30…</em></dd></div>
+<div class="row" data-f><dt>Black Market and Cash In</dt><dd>From Wave 10 the Score button opens the Exchange: the Black Market sells three items (restocked after boss waves), and Cash In turns credits into score. <em>When: When credits build up and the grid is full.</em></dd></div>
+<div class="row" data-f><dt>The Remnant</dt><dd>From Wave 28 the Remnant march with the swarm: war machines left by the pilots before you. Each has one trick. A Husk stands back up once unless area damage, Burn or an ability finishes it. A Bulwark’s front plate blocks shots from ahead. A Welder repairs the others. A Lodestone drags bolts in and shrugs them off; Arc hurts it double. A Siege Crawler plants and shells a tower offline. An Adapter armours up against the element that hit it last. A Warden’s squad takes less damage near it. <em>When: From Wave 28 on Normal. Mission Control names each one the first time you meet it.</em></dd></div></dl>
+<h3>Endgame</h3>
+<dl class="ent"><div class="row" data-f><dt>Techniques</dt><dd>A Technique is an alternate fire mode for one tower type, learned with a one-point talent. Each tower then has a Fire row: Standard or the Technique. It is a different job, not an upgrade. <em>When: After you learn one in Talents.</em></dd></div>
+<div class="row" data-f><dt>Ascend Perks and Mastery</dt><dd>Past LV 5 a tower Ascends: ×1.15 damage and a choice of three perks that change how it works (a forking beam, ricochets, shattering freezes). Every tower type also has a Mastery: 5 ranks earned across runs from its share of the damage. <em>When: Late in a run, when your best towers are maxed. Mastery: after every run.</em></dd></div>
+<div class="row" data-f><dt>Daily Hunt</dt><dd>Every day has one Daily Hunt: the same map, zone, bounty, Nemesis, talent build and dice for everyone. The build has two Capstones and their towers. Your first run of the day is ranked: best wave first, then score. <em>When: Once a day, from the hangar. Opens at Level 20 and stays open after a Supernova.</em></dd></div>
+<div class="row" data-f><dt>Talents and Progression</dt><dd>Runs pay XP (from score and the Bounty Purse). Each level is a talent point. Seven trees: rows open every 3 points, a Capstone at 12 changes how you play. Supernova resets your level and talents for a permanent bonus, an emblem and a wider core light. Your career rank counts every XP you have ever earned, and a Supernova never lowers it. Each rank also needs days served. The Archive keeps what you have met. <em>When: Between runs.</em></dd></div>
+<div class="row" data-f><dt>Talents Deep Dive</dt><dd>Every point in a tree also raises its Signature, an effect only that tree has; deeper points count more. 8 points in each of two trees opens their Fusion: 21 in all, one active per run. 12 points in a tree opens a Capstone, a new way to play, and 16 its tier tower. <em>When: Between runs, once you have points in two trees.</em></dd></div></dl></section>
+<section id="music"><h2>Music</h2>
+<p data-f>There is no playlist. The game composes its music live from 10 genres and 40 styles, and the music follows the fight. Each of the 13 bosses has its own theme.</p>
+<dl class="ent"><div class="row" data-f><dt>Listen</dt><dd>Pick a vibe or choose genres. Tap the heart to keep a song in My Tracks.</dd></div>
+<div class="row" data-f><dt>Shape</dt><dd>Energy, Follow battle, Tempo, song length, a six-channel mixer and effects.</dd></div>
+<div class="row" data-f><dt>Compose</dt><dd>Pick a style, mood, key and chords. Draw the beat on a 16-step grid and the melody on its own grid.</dd></div>
+<div class="row" data-f><dt>Share</dt><dd>Every song has a share button that copies a short code. A friend taps Paste a code in My Tracks and has the same song.</dd></div>
+<div class="row" data-f><dt>In a fight</dt><dd>Tap Music on the left rail for a small deck: back, skip, or the heart.</dd></div></dl>
+<p data-f>The <a href="./#music">Music Studio section</a> on the front page has screenshots.</p></section>
+<section id="story"><h2>The Story</h2>
+<p data-f>The intro plays once. You can watch it again in the Field Manual.</p>
+<blockquote data-f>In the beginning there was a difference.<br>Warm beside cold. Light beside dark.<br>Every sunrise, every heartbeat, every hand you ever held was fire falling toward the cold.<br>We named that fall the gradient.</blockquote>
+<blockquote data-f>Nothing falls forever.<br>The stars burned away one by one, and none were born to replace them.<br>On the final night, they burned everything they loved to stay warm one more hour.<br>Then the cold was the same in every direction, and time had nothing left to do.</blockquote>
+<blockquote data-f>One difference remains.<br>It burns inside your core: the last fire in a universe of ash.<br>The things that outlived the stars can feel it.<br>They are starving, and they are all coming.</blockquote>
+<blockquote data-f>What is left of humanity lives by its light.<br>Every pilot before you is part of the dark now.<br>Defend the Last Gradient.</blockquote>
+<p data-f><em>Mission Control to pilot. The core is yours. Good luck.</em></p></section>
+<section id="extras"><h2>Settings and Extras</h2>
+<dl class="ent"><div class="row" data-f><dt>Send Feedback</dt><dd>Report a bug or share an idea from the pause menu, the end-of-run screen or Settings. A report carries the version, the device and the run log. I read the reports.</dd></div>
+<div class="row" data-f><dt>Run log</dt><dd>A text log of your run that you can copy or save. It keeps the run in progress and the last 4 finished runs.</dd></div>
+<div class="row" data-f><dt>Plays offline</dt><dd>The game starts with no connection.</dd></div>
+<div class="row" data-f><dt>Graphics</dt><dd>Settings has switches for Bloom, Glow, Fine sprites and Zone effects.</dd></div>
+<div class="row" data-f><dt>Mono Audio</dt><dd>For one earbud or a single speaker.</dd></div>
+<div class="row" data-f><dt>Briefings and notices</dt><dd>Choose whether boss and bounty briefings pause the game, and how many notices you see.</dd></div></dl></section></main></div>
+  <footer><span>© 2026 Last Gradient</span><span>Contact: nic@lastgradient.com</span><a href="privacy.html">Privacy</a></footer>
+</div>
+<script>
+(function () {
+  var q = document.getElementById('q'), none = document.getElementById('none'), toc = document.querySelector('.toc');
+  if (window.matchMedia('(max-width: 1079px)').matches) toc.open = false;
+  var items = [].slice.call(document.querySelectorAll('[data-f]')), secs = [].slice.call(document.querySelectorAll('main section'));
+  var txt = items.map(function (e) { return e.textContent.toLowerCase(); });
+  q.addEventListener('input', function () {
+    var v = q.value.trim().toLowerCase(), any = false;
+    items.forEach(function (e, i) { var on = !v || txt[i].indexOf(v) >= 0; e.hidden = !on; });
+    [].forEach.call(document.querySelectorAll('main h3, main .ent'), function (e) { e.hidden = false; });
+    if (v) {
+      [].forEach.call(document.querySelectorAll('main .ent'), function (d) { d.hidden = !d.querySelector('.row:not([hidden])'); });
+      [].forEach.call(document.querySelectorAll('main h3'), function (h) { var n = h.nextElementSibling, on = false; while (n && n.tagName !== 'H3') { if (!n.hidden && (n.hasAttribute('data-f') || n.classList.contains('ent'))) on = true; n = n.nextElementSibling; } h.hidden = !on; });
+    }
+    secs.forEach(function (s) { var on = !v || !!s.querySelector('[data-f]:not([hidden])'); s.hidden = !on; if (on) any = true; });
+    none.hidden = any;
+  });
+})();
+</script>
+</body>
+</html>

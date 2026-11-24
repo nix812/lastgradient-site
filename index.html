@@ -80,6 +80,8 @@ section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direc
 .callout { margin: 30px 0 34px; padding: 20px 22px; max-width: 72ch; border: 1px solid var(--line); box-shadow: inset 3px 0 0 var(--cryo); background: rgba(106,226,255,.04); }
 .callout h3 { margin: 0 0 8px; font-size: 15px; letter-spacing: 0.1em; color: var(--cryo); }
 .callout p { margin: 0; }
+.status .links { display: inline-flex; gap: 18px; } .status .links a { color: var(--cryo); text-underline-offset: 4px; }
+.letter a, .warn a, aside a { color: var(--cryo); }
 .music { border-top: 1px solid var(--line); background: radial-gradient(60% 50% at 85% 0%, rgba(255,176,58,.07), transparent 70%); }
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 26px; }
 
@@ -145,7 +147,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 <header class="hero">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div class="status"><span class="tag">COMING SOON</span><span class="lbl">iPhone and iPad · Tower defense</span></div>
+    <div class="status"><span class="tag">COMING SOON</span><span class="lbl">iPhone and iPad · Tower defense</span><span class="lbl links"><a href="wiki.html">Wiki</a><a href="changelog.html">Changelog</a></span></div>
     <h1 aria-label="Last Gradient"><span class="last">LAST</span><span class="grad">GRADIENT</span><canvas id="shards" aria-hidden="true"></canvas></h1>
     <p class="pitch">A deep, retro space tower defense. <b>Easy to pick up, hard to master.</b> Endless runs. No ads.</p>
     <p class="lore">The Last Gradient is the last fire in a dead universe. Everything that survived the dark wants it. You hold it.</p>
@@ -262,7 +264,7 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
     </div>
     <aside class="side">
     <div class="head"><span class="lbl">Fair warning</span><h2>Hard by Design</h2>
-      <p>Last Gradient is a hard game, and that is on purpose. There are a lot of systems, and nobody learns them all in one run. Training gets you started, the Field Manual has the details, and every run teaches you something new. The goal is replayability and fun. Stick with it.</p></div>
+      <p>Last Gradient is a hard game, and that is on purpose. There are a lot of systems, and nobody learns them all in one run. Training gets you started, the <a href="wiki.html">Wiki</a> explains every system, and every run teaches you something new. The goal is replayability and fun. Stick with it.</p></div>
     <ul class="deal">
       <li>No ads</li><li>No microtransactions</li><li>Pay once, own it all</li><li>Plays offline</li><li>Runs save when you close the game</li>
     </ul>
@@ -280,6 +282,8 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
   <div class="wrap">
     <span>© 2026 Last Gradient</span>
     <span>Contact: <span class="sel">nic@lastgradient.com</span></span>
+    <a href="wiki.html">Wiki</a>
+    <a href="changelog.html">Changelog</a>
     <a href="privacy.html">Privacy</a>
   </div>
 </footer>
