@@ -16,6 +16,7 @@
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>html{background:#07080f}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+
 </head>
 <body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Silkscreen:wght@700&display=swap">
@@ -69,6 +70,17 @@ h1 .grad { display: block; font-weight: 700; font-size: clamp(38px, 10.5vw, 118p
 .signup small { font-size: 15px; color: var(--dim); }
 .signup .msg { font-size: 16px; color: var(--core); min-height: 1.25em; }
 .signup .msg.err { color: var(--bad); }
+/* Launch day (Nov 25 2026): two buttons take the place of the sign-up. Hidden until the page is built with LG_LAUNCH=1 (tools/site_build.py)
+   or opened with ?launch=1 (a preview). The script at the end of the page switches them on. */
+.launch { max-width: 620px; }
+.launch .row { display: flex; flex-wrap: wrap; gap: 12px; }
+.lbtn { flex: 1 1 240px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; font-size: 15px; letter-spacing: 0.16em; color: var(--ink); background: rgba(14, 17, 33, 0.88); box-shadow: inset 0 0 0 2px var(--line2); padding: 16px 20px; clip-path: var(--cut); }
+.lbtn small { font-size: 14px; letter-spacing: 0.04em; color: var(--dim); }
+.lbtn:hover { box-shadow: inset 0 0 0 2px var(--amber); }
+.lbtn.primary { color: #0b0b12; background: var(--amber); box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.22); }
+.lbtn.primary small { color: rgba(11, 11, 18, 0.72); }
+.lbtn.primary:hover { background: #ffc264; }
+.lbtn.off { opacity: 0.55; pointer-events: none; }
 
 /* ---- sections ---- */
 section .wrap { padding-block: clamp(40px, 6vw, 72px); display: flex; flex-direction: column; gap: 26px; }
@@ -157,6 +169,9 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <div class="msg" role="status" aria-live="polite"></div>
       <small>One email when the game launches. Nothing else.</small>
     </form>
+    <div class="launch" hidden>
+      <div class="row"><a class="lbtn primary" data-store href="#">GET IT ON THE APP STORE<small>iPhone and iPad · One price, no ads</small></a><a class="lbtn" data-demo href="https://nix812.github.io/Entropy/">TRY THE FREE TRAINING<small>Plays in your browser</small></a></div>
+    </div>
   </div>
 </header>
 
@@ -273,6 +288,9 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
       <div class="row"><input id="emailEnd" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required><button type="submit">NOTIFY ME</button></div>
       <div class="msg" role="status" aria-live="polite"></div>
     </form>
+    <div class="launch" hidden>
+      <div class="row"><a class="lbtn primary" data-store href="#">GET IT ON THE APP STORE<small>iPhone and iPad · One price, no ads</small></a><a class="lbtn" data-demo href="https://nix812.github.io/Entropy/">TRY THE FREE TRAINING<small>Plays in your browser</small></a></div>
+    </div>
     </aside>
     </div>
   </div>
@@ -291,6 +309,15 @@ body { background-image: radial-gradient(1.5px 1.5px at 40px 70px, rgba(233,228,
 <script>
 // Sign-up: posts the address to a sheet in the lastgradient.com Workspace. Empty URL = not connected yet (this draft).
 const SIGNUP_URL = 'https://script.google.com/macros/s/AKfycbwNlJecVWp_kXPwt0Cqr55d0QYB3V8hN0oqLAd3k1OwS8s44cGdbV8RQvrDsRsDWLXeYg/exec';
+// Launch day: show the two buttons, hide the sign-up, change the tag. window.LG_LAUNCH and window.LG_STORE come from tools/site_build.py.
+(() => {
+  const on = !!window.LG_LAUNCH || /[?&]launch=1\b/.test(location.search); if (!on) return;
+  const store = window.LG_STORE || '';
+  for (const f of document.querySelectorAll('form.signup')) f.hidden = true;
+  for (const d of document.querySelectorAll('.launch')) d.hidden = false;
+  for (const a of document.querySelectorAll('a[data-store]')) { if (store) a.href = store; else { a.classList.add('off'); a.querySelector('small').textContent = 'The link is set on launch day'; } }
+  const tag = document.querySelector('.status .tag'); if (tag) tag.textContent = 'OUT NOW';
+})();
 for (const f of document.querySelectorAll('form.signup')) {
   f.addEventListener('submit', async (ev) => {
     ev.preventDefault();
